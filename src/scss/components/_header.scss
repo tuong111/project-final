@@ -1,0 +1,94 @@
+.header {
+    position: relative;
+    &-top {
+        display: flex;
+        background-image: $bgImage;
+        padding: 0px 25px;
+        height: 60px;
+        -webkit-box-pack: start;
+        justify-content: flex-start;
+        align-items: center;
+        a {
+        text-decoration: none;
+        color: $white;
+        }
+    }
+    &-logo {
+        font-size: $logoFont;
+        width: 20%;
+    }
+    &-title {
+        width: 65%;
+        font-size: $title; 
+    }
+    &-item {
+        margin: 0 20px; 
+            a{
+                transition:  2s;
+            }
+            &:hover {
+                text-decoration: underline;
+                text-underline-offset: 0.5em;
+            }
+    }
+    &-left {
+        width:15% ;
+        display: flex;
+        justify-content: flex-end;
+        &-more {
+            display: none;
+        }
+    }
+    &-modal {
+        position: absolute;
+        width: 300px;
+        right : 0;
+        margin-right: 25px;
+        display: block;
+        border-left : 1px solid $border-gray;
+        border-right : 1px solid $border-gray;
+        border-radius: 2px;
+        box-shadow: $box-sadow ;
+        &-item {
+            cursor: pointer;
+            height: 50px;
+            border-bottom : 1px solid $border-gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap : 10px;
+            &:hover {
+                opacity: .5;
+            }
+        }
+        }
+}
+
+.btn-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 10px;
+    span {
+        margin-top: 3px;
+    }
+}
+
+@media (max-width : 740px) {
+    .header{
+        &-top {
+            justify-content: space-between;
+        }
+        &-title {
+            display: none;
+        }
+        &-left {
+            display: none;
+            &-more {
+                display: block;
+            }
+        }
+    }
+    
+
+}

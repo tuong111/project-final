@@ -1,0 +1,67 @@
+.signin {
+    max-width: 1980px;
+    text-align: center;
+        &-header {
+            min-height: 188px;
+            background-image: $bgImage;
+            position: relative;
+        }
+        &-logo {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            a {
+                font-size: $logoFont;
+                text-decoration: none;
+                color: $white;
+                margin: $margin;
+            }
+        }
+        &-main {
+            width: 100%;
+            position: absolute;
+            margin-top : -90px;
+            display: flex;
+            justify-content: center;
+        }
+        &-form {
+            background: $bgColor;
+            width: 650px;
+            min-height: 610px;
+            text-align: center;
+            h2 {
+                margin : 50px;
+            }
+            &-main {
+                width: 80%;
+                margin: auto;
+                position: relative;
+                &-2col {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+            &-input {
+                margin: auto;
+                margin-top : 20px;
+            }
+            &-text {
+                position: absolute;
+                right : 0;
+                cursor: pointer;
+                &:hover {
+                    color: #eb8810;
+                }
+                &-signup {
+                    margin-top: 50px;
+                }
+            }
+            &-btn {
+                margin-top: 50px;
+                button {
+                    color: $white;
+
+                }
+            }
+        }
+}

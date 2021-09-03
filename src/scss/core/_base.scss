@@ -1,0 +1,42 @@
+@import './variables';
+body {
+    box-sizing: border-box;
+}
+
+.text {
+    &-primary {
+        color : $primaryColor
+    }
+    &-content {
+        color : $textColor;
+    }
+    &-title {
+        color: $white;
+    }
+    
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    &:hover{
+        color: $hoverColor;
+    }
+}
+
+.bold {
+    font-weight: 600;
+}
+.i {
+    font-style: italic !important;
+}
+.MuiInputBase-root {
+    border-color: $primaryColor !important;
+}
+
+.active {
+    display: block !important;
+}
+.inactive {
+    display: none !important;
+}

@@ -19,9 +19,24 @@ const addUserInfo = async (data) => {
     const res = await axios.post(`${responseUrl}/users`,data)
     return res
 }
+
+const getUserByID = async (id) => {
+    return new Promise((resolve, reject) => {
+        axios.get(`${responseUrl}/users/${id}`).then(
+            res => {
+                const {data} = res
+                resolve(data)
+            }
+        )
+        .catch(error => {
+            reject(error)
+        })
+    })
+}
 const userServices = {
     getUserInfo,
-    addUserInfo
+    addUserInfo,
+    getUserByID
 }
 
 export default userServices;

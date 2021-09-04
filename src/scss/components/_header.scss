@@ -60,6 +60,10 @@
             &:hover {
                 opacity: .5;
             }
+            img {
+                max-width: 40px;
+                max-height: 40px;
+            }
         }
         }
 }

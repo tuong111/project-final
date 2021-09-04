@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import userServices from './../Services/getUsersAPI';
 import { useState } from 'react';
 import swal from 'sweetalert';
+import InfoHeader from '../Components/info-header';
 
 export default function Signup(props) {
   const [data, setData] = useState([])
@@ -60,11 +61,7 @@ export default function Signup(props) {
 }
   return (
     <div className="signin">
-      <div className="signin-header">
-        <div className="signin-logo">
-          <Link to='/'>JEST W</Link>
-        </div>
-      </div>
+        <InfoHeader/>
       <div className="signin-main">
         <div className="signin-form">
           <div className="signin-form-main">

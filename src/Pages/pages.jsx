@@ -7,6 +7,7 @@ import Interview from './interview';
 import Hr from './hr';
 import Signin from './signin';
 import Signup from './signup';
+import Infouser from './infoUser';
 
 export default function Pages(props) {
 
@@ -21,6 +22,7 @@ export default function Pages(props) {
                 <Route path='/interview' component={Interview} />
                 <Route path = '/signin' component={Signin}/>
                 <Route path = '/signup' component={Signup}/>
+                <Route path = '/info' component = {Infouser}/>
             </Switch>
         </Router>
     )

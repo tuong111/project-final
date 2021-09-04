@@ -1,0 +1,49 @@
+.info {
+    &-container {
+        margin-top: 20px;
+        border-radius: 10px;
+        border : 1px solid #dfe6e9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: linear .3s;
+        &-left {
+            text-align: center;
+            width: 20%;
+            min-width: 200px;
+            img {
+                max-width: 120px;
+                max-height: 120px;
+            }
+
+        }
+        &-right {
+            width: 80%;
+        }
+        &:hover {
+            background-image: #b2bec3;
+            box-shadow: 2px 2px #b2bec3;
+        }
+    }
+}
+.edit-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-flow: column;
+    padding: 20px 0;
+    &-item {
+        width: 90%;
+        display: flex;
+        gap : 50px;
+        margin-bottom: 10px;
+    }
+    &-btn {
+        margin-top: 20px;
+        gap : 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+}

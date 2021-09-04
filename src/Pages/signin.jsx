@@ -2,6 +2,7 @@ import { Button, TextField } from '@material-ui/core';
 import { React, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
+import InfoHeader from '../Components/info-header';
 import userServices from './../Services/getUsersAPI';
 
 
@@ -18,14 +19,15 @@ export default function Signin(props) {
     const [password, setPassword] = useState('')
     const history = useHistory()
 
-
     const SignIn = () => {
         let isCorrect = false
         let userName = ''
+        let id = ''
         for (let i = 0; i < data.length; i++) {
             if (data[i].email === email && data[i].password === password) {
                 isCorrect = true
                 userName = `${data[i].['first name']} ${data[i].['last name']}`
+                id = data[i].id
                 break;
             }
         }
@@ -33,6 +35,7 @@ export default function Signin(props) {
         if (isCorrect) {
             localStorage.setItem('isLogin', true)
             localStorage.setItem('userName', userName)
+            localStorage.setItem('id',id)
             history.push('/')
             swal(
                 {
@@ -64,11 +67,7 @@ export default function Signin(props) {
     }
     return (
         <div className="signin" onKeyDown={(e) => EnterSignIn(e.key)}>
-            <div className="signin-header">
-                <div className="signin-logo">
-                    <Link to="/">JEST W</Link>
-                </div>
-            </div>
+                <InfoHeader/>
             <div className="signin-main">
                 <div className="signin-form">
                     <div className="signin-form-main">

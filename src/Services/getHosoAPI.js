@@ -2,9 +2,9 @@ import axios from "axios";
 
 const responseUrl = "https://tuong-json-sever.herokuapp.com/api"
 
-const getUserInfo = async () => {
+const getHoSoAll = async () => {
     return new Promise((resolve, reject) => {
-        axios.get(`${responseUrl}/users`).then(
+        axios.get(`${responseUrl}/hoso`).then(
             res => {
                 const {data} = res
                 resolve(data)
@@ -15,14 +15,14 @@ const getUserInfo = async () => {
         })
     })
 }
-const addUserInfo = async (data) => {
-    const res = await axios.post(`${responseUrl}/users`,data)
+const addHoSo = async (data) => {
+    const res = await axios.post(`${responseUrl}/hoso`,data)
     return res
 }
 
-const getUserByID = async (id) => {
+const getHoSoByID = async (userID) => {
     return new Promise((resolve, reject) => {
-        axios.get(`${responseUrl}/users/${id}`).then(
+        axios.get(`${responseUrl}/hoso/${userID}`).then(
             res => {
                 const {data} = res
                 resolve(data)
@@ -33,15 +33,15 @@ const getUserByID = async (id) => {
         })
     })
 }
-const editUserByID = async (id , data) => {
-    const res = await axios.patch(`${responseUrl}/users/${id}`, data)
+const editHoSoByID = async (id , data) => {
+    const res = await axios.patch(`${responseUrl}/hoso/${id}`, data)
     return res
 }
-const userServices = {
-    getUserInfo,
-    addUserInfo,
-    getUserByID,
-    editUserByID
+const hoSoServices = {
+    getHoSoAll,
+    addHoSo,
+    getHoSoByID,
+    editHoSoByID
 }
 
-export default userServices;
+export default hoSoServices;

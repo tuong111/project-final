@@ -5,6 +5,7 @@ import userServices from './../Services/getUsersAPI';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import InfoHeader from '../Components/info-header';
+import hoSoServices from '../Services/getHosoAPI';
 
 export default function Signup(props) {
   const [data, setData] = useState([])
@@ -46,8 +47,15 @@ export default function Signup(props) {
             "last name" : lastname,
             "email" : email,
             "password" : password,
-            "isLogin" : false
+            "isLogin" : false,
+            "img" : "https://www.gravatar.com/avatar/6a0b1af95f9cda50a5f10f9a26c6be8c?size=192&d=mm"
         })
+        hoSoServices.addHoSo({
+          "user_id" : "",
+          "chucdanh" : "",
+          "namKN" : ""
+        })
+
         swal({
             title: "SUCCESS",
             text: "Your account has been registered succesfully",

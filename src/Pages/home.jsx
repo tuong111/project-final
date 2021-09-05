@@ -6,9 +6,7 @@ export default function Home(props) {
     
     return (
         <div className="home">
-            <Header 
-            userName = {localStorage.getItem('userName')}
-            />
+            <Header userID = {localStorage.getItem('id')}/>
         </div>
     )
 }

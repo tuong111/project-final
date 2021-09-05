@@ -1,12 +1,14 @@
 import { Button, TextField } from '@material-ui/core'
 import React, { useState } from 'react'
 import SaveIcon from '@material-ui/icons/Save';
+import hoSoServices from '../Services/getHosoAPI';
+import userServices from '../Services/getUsersAPI';
 
 
 
 
 
-const Default = ({ userName }) => {
+const Default = ({ userName , hoSoUser}) => {
 
     return (
         <div className="info-container-right-text">
@@ -14,8 +16,8 @@ const Default = ({ userName }) => {
                 {userName}
             </h3>
             <p className="text-content">
-                Chuc Danh : <br></br>
-                Nam kinh nghiem : <br></br>
+                Chuc Danh : {hoSoUser.chucdanh}<br></br>
+                Nam kinh nghiem : {hoSoUser.namKN}<br></br>
                 Cong ty gan day nhat : <br></br>
                 Bang cap cao nhat : <br></br>
             </p>
@@ -25,25 +27,41 @@ const Default = ({ userName }) => {
 }
 
 
-export function EditForm({ userData ,toggleCancel, toggleSave}) {
+export function EditForm({ userData ,toggleCancel, toggleSave,hoSoUser }) {
     const handleCancelBtn = (e) => {
         toggleCancel(e)
     }
 
     const handleSaveBtn = (e) => {
         toggleSave(e)
+        hoSoServices.editHoSoByID(userData.id, {
+            "user_id" : userData.id,
+            "chucdanh" : chucdanh,
+            "namKN" : namKN
+        })
+        userServices.editUserByID(userData.id, {
+            "first name" : firstname,
+            "last name" : lastname
+        })
+
+        hoSoServices.getHoSoByID(userData.id)
+        userServices.getUserByID(userData.id)
     }
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [chucdanh, setChucDanh] = useState('')
+    const [namKN , setNamKN] = useState('')
     return (
         <div className="edit-form">
             <div className="edit-form-item">
-                <TextField required id="standard-required" label="First Name" defaultValue={userData.['first name']} />
-                <TextField required id="standard-required" label="Last Name" defaultValue={userData.['last name']} />
+                <TextField label="First Name" defaultValue={userData['first name']} onChange={(e)=> setFirstName(e.target.value)}/>
+                <TextField label="Last Name" defaultValue={userData['last name']} onChange={(e)=> setLastName(e.target.value)}/>
             </div>
             <div className="edit-form-item">
-                <TextField required id="standard-required" label="Chuc Danh" defaultValue="" fullWidth />
+                <TextField label="Chuc Danh" defaultValue={hoSoUser.chucdanh} fullWidth onChange={(e)=> setChucDanh(e.target.value)}/>
             </div>
             <div className="edit-form-item">
-                <TextField required id="standard-required" label="So Nam Kinh Nghiem" defaultValue="" fullWidth />
+                <TextField label="So Nam Kinh Nghiem" defaultValue={hoSoUser.namKN} fullWidth onChange={(e)=> setNamKN(e.target.value)}/>
             </div>
             <div className="edit-form-item">
                 <div className="edit-form-btn">
@@ -78,10 +96,9 @@ export function EditForm({ userData ,toggleCancel, toggleSave}) {
 
 
 
-export default function Thongtinchung({ userName, userData }) {
+export default function Thongtinchung({ userName, userData, hoSoUser }) {
 
 
-    const img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEammMOQs3IJqbPrHVM-AjSgXJX1jLucdpZA&usqp=CAU"
     const [clickToggleEdit, setClickTogleEdit] = useState(false)
 
     const CancelBtn = (event) => {
@@ -96,7 +113,7 @@ export default function Thongtinchung({ userName, userData }) {
     return (
         <div className="info-container" onClick={()=> setClickTogleEdit(true)}>
             <div className="info-container-left">
-                <img src={img} alt="" />
+                <img src={userData.img} alt="" />
                 <br />
                 <Button variant="contained" color="primary" className={clickToggleEdit ? '' : "inactive"}>
                     Edit
@@ -105,7 +122,8 @@ export default function Thongtinchung({ userName, userData }) {
             <div className="info-container-right">
                 {
                     clickToggleEdit ? <EditForm userData={userData} toggleCancel={(event) => CancelBtn(event)}
-                    toggleSave = {(e)=> toggleSave(e)}/> : <Default userName={userName} />
+                    toggleSave = {(e)=> toggleSave(e)}
+                    hoSoUser = {hoSoUser}/> : <Default userName={userName} hoSoUser ={hoSoUser}/>
                 }
 
             </div>

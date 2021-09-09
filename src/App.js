@@ -1,6 +1,5 @@
 
 import './App.scss';
-import Home from './Pages/home';
 import Pages from './Pages/pages';
 
 

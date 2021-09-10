@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import SaveIcon from "@material-ui/icons/Save";
 import hoSoServices from "../Services/getHosoAPI";
 import userServices from "../Services/getUsersAPI";
+import { useDispatch, useSelector } from 'react-redux';
+import { getHoSoByID } from './../actions/hoso';
+import { getUserID } from './../actions/users';
 
-const Default = ({ userName, hoSoUser }) => {
+const Default = ({ userData, hoSoUser }) => {
   return (
     <div className="info-container-right-text">
-      <h3>{userName}</h3>
+      <h3>{`${userData['first name']} ${userData['last name']}`}</h3>
       <p className="text-content">
         Chuc Danh : {hoSoUser.chucdanh}
         <br></br>
@@ -25,26 +28,34 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser }) {
     toggleCancel(e);
   };
 
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
   const handleSaveBtn = (e) => {
     toggleSave(e);
-    if (chucdanh !== '' && namKN !== '' ){
+    // call API update lai ho so
         hoSoServices.editHoSoByID(userData.id, {
             user_id: userData.id,
             chucdanh: chucdanh,
             namKN: namKN,
           });
-    }
 
-    if (firstname !== '' && lastname !== '') {
+        // Chinh sua du lieu o store
+          dispatch(getHoSoByID({
+            user_id: userData.id,
+            chucdanh: chucdanh,
+            namKN: namKN,
+          }))
+          // Call api update lai user
         userServices.editUserByID(userData.id, {
             "first name": firstname,
             "last name": lastname,
           });
-    }
-
-
-    hoSoServices.getHoSoByID(userData.id);
-    userServices.getUserByID(userData.id);
+          // chinh sua du lieu store
+          dispatch(getUserID({
+            ...user,
+            "first name": firstname,
+            "last name": lastname,
+          }))
   };
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -144,7 +155,7 @@ export default function Thongtinchung({ userName, userData, hoSoUser }) {
             hoSoUser={hoSoUser}
           />
         ) : (
-          <Default userName={userName} hoSoUser={hoSoUser} />
+          <Default userData={userData} hoSoUser={hoSoUser} />
         )}
       </div>
     </div>

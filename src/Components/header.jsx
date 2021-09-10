@@ -8,6 +8,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import userServices from '../Services/getUsersAPI';
+import { useDispatch, useSelector } from "react-redux";
+import { getUserID } from './../actions/users';
 
 const ModalLogin = ({ props }) => {
   const history = useHistory();
@@ -58,20 +60,20 @@ export default function Header({userID}) {
   const [isClickInfo, setClickInfo] = useState(false);
   const checkLogin = localStorage.getItem("isLogin");
   const history = useHistory();
-  const [data, setData] = useState([])
+  const dispatch = useDispatch()
   useEffect(() => {
     userServices.getUserByID(userID).then(
-      res => setData(res)
+      res => dispatch(getUserID(res))
     )
 
-  },[userID])
+  },[])
   const handlelogOut = (value) => {
     localStorage.clear();
     setClickInfo(value);
     history.push("/");
   };
 
-    
+   const data = useSelector(state => state.user.user) 
   return (
     <header className="header">
       <div className="header-top">

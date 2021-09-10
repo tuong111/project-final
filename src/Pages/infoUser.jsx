@@ -1,36 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Thongtinchung from "../Components/thongtinchung";
-import { Container , Typography} from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import Header from "../Components/header";
-import userServices from "./../Services/getUsersAPI";
+
 import hoSoServices from "../Services/getHosoAPI";
 import Thongtincanhan from "../Components/thongtincanhan";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getHoSoByID } from './../actions/hoso';
 
 export default function Infouser(props) {
-  const [data, setData] = useState([]);
-  const [hoso, setHoSo] = useState([]);
-  const user = useSelector(state => state.user.user)
-  const hosoData = useSelector(state => state.hoso.hoso)
+
+
+
+  
+  const dispatch = useDispatch()
   
   useEffect(() => {
-    userServices
-      .getUserByID(localStorage.getItem("id"))
-      .then((res) => setData(res));
     hoSoServices
       .getHoSoByID(localStorage.getItem("id"))
-      .then((res) => setHoSo(res));
+      .then((res) => {
+        dispatch(getHoSoByID(res))
+      })
+ 
   }, []);
-console.log('Store user :', user)
-console.log('Store ho so :', hosoData)
+  const hosoData = useSelector(state => state.hoso.hoso)
+  const data = useSelector(state => state.user.user)
+
+
   return (
     <div className="info">
       <Header userID={localStorage.getItem("id")} />
       <Container>
         <Thongtinchung
-          userName={`${data["first name"]} ${data["last name"]}`}
+          userName={data.userName}
           userData={data}
-          hoSoUser={hoso}
+          hoSoUser={hosoData}
         />
       </Container>
       <Container>

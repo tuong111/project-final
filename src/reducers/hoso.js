@@ -1,6 +1,5 @@
 const initialState = {
-    hoso : [],
-    hosoID : {}
+    hoso : {}
 }
 
 const hosoReducer = (state = initialState, action) => {
@@ -16,7 +15,11 @@ const hosoReducer = (state = initialState, action) => {
         
         }  
         case 'GET_HOSO_BYID' : {
-            return state
+            const hosoUV = action.payload
+            return {
+                ...state,
+                hoso : hosoUV
+            }
         
         }
     

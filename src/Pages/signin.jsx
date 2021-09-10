@@ -4,6 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import InfoHeader from '../Components/info-header';
 import userServices from './../Services/getUsersAPI';
+import { getUserID } from './../actions/users';
+import { useDispatch } from 'react-redux';
 
 
 export default function Signin(props) {
@@ -18,21 +20,33 @@ export default function Signin(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const SignIn = () => {
         let isCorrect = false
         let userName = ''
         let id = ''
+        let img = ''
         for (let i = 0; i < data.length; i++) {
             if (data[i].email === email && data[i].password === password) {
                 isCorrect = true
-                userName = `${data[i].['first name']} ${data[i].['last name']}`
+                userName = `${data[i]['first name']} ${data[i]['last name']}`
                 id = data[i].id
+                img = data[i].img
                 break;
             }
         }
 
         if (isCorrect) {
+            const action = getUserID({
+                id : id,
+                userName : userName,
+                isLogin : true,
+                img : img
+            })
+
+            dispatch(action)
+
             localStorage.setItem('isLogin', true)
             localStorage.setItem('userName', userName)
             localStorage.setItem('id',id)

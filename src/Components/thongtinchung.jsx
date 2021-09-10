@@ -23,44 +23,75 @@ const Default = ({ userData, hoSoUser }) => {
   );
 };
 
-export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser }) {
-  const handleCancelBtn = (e) => {
-    toggleCancel(e);
-  };
-
+export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userImg }) {  
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [chucdanh, setChucDanh] = useState("");
+  const [namKN, setNamKN] = useState("");
+  let currentImg = user.img
+  const handleCancelBtn = (e) => {
+    toggleCancel(e);
+    dispatch(getUserID({
+      ...user,
+      img : currentImg
+    }))
+
+  };
+  let push_ChucDanh = ''
+  if (chucdanh === '') {
+    push_ChucDanh = hoSoUser.chucdanh
+  }else {
+    push_ChucDanh = chucdanh
+  }
+  let push_namKN = ''
+  if (namKN === '') {
+    push_namKN = hoSoUser.namKN
+  }else {
+    push_namKN = namKN
+  }
+  let push_FirstName = ''
+  if (firstname === '') {
+    push_FirstName = userData['first name']
+  }else {
+    push_FirstName = firstname
+  }
+  let push_LastName = ''
+  if (lastname ===''){
+    push_LastName = userData['last name']
+  }else {
+    push_LastName = lastname
+  }
   const handleSaveBtn = (e) => {
     toggleSave(e);
     // call API update lai ho so
         hoSoServices.editHoSoByID(userData.id, {
             user_id: userData.id,
-            chucdanh: chucdanh,
-            namKN: namKN,
+            chucdanh: push_ChucDanh,
+            namKN: push_namKN,
           });
 
         // Chinh sua du lieu o store
           dispatch(getHoSoByID({
             user_id: userData.id,
-            chucdanh: chucdanh,
-            namKN: namKN,
+            chucdanh: push_ChucDanh,
+            namKN: push_namKN,
           }))
           // Call api update lai user
         userServices.editUserByID(userData.id, {
-            "first name": firstname,
-            "last name": lastname,
+            "first name": push_FirstName,
+            "last name": push_LastName,
+            img : userImg
           });
           // chinh sua du lieu store
           dispatch(getUserID({
             ...user,
-            "first name": firstname,
-            "last name": lastname,
+            "first name": push_FirstName,
+            "last name": push_LastName,
+            img : userImg
           }))
   };
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [chucdanh, setChucDanh] = useState("");
-  const [namKN, setNamKN] = useState("");
   return (
     <div className="edit-form">
       <div className="edit-form-item">
@@ -120,7 +151,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser }) {
   );
 }
 
-export default function Thongtinchung({ userName, userData, hoSoUser }) {
+export default function Thongtinchung({  userData, hoSoUser }) {
   const [clickToggleEdit, setClickTogleEdit] = useState(false);
 
   const CancelBtn = (event) => {
@@ -132,17 +163,37 @@ export default function Thongtinchung({ userName, userData, hoSoUser }) {
     e.stopPropagation();
   };
 
+  const [userImg , setUserImg] = useState(userData.img)
+  const uploadAvatar = async (value) => {
+    const file = value.target.files[0]
+    const base64 = await convertBase64(file)
+    setUserImg(base64)
+
+  }
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject ) => {
+      const fileReader = new FileReader()
+      fileReader.readAsDataURL(file)
+      fileReader.onload = () => 
+      {
+        resolve(fileReader.result)
+      }
+      fileReader.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }
   return (
     <div className="info-container" onClick={() => setClickTogleEdit(true)}>
       <div className="info-container-left">
-        <img src={userData.img} alt="" />
+        <img src={userImg} alt="" />
         <br />
         <div
           className={clickToggleEdit ? "" : "inactive"}
         >
           <Button variant="contained" component="label">
             Upload Avatar
-            <input type="file" hidden />
+            <input type="file" hidden onChange = {(e) => uploadAvatar(e)}/>
           </Button>
         </div>
       </div>
@@ -153,9 +204,10 @@ export default function Thongtinchung({ userName, userData, hoSoUser }) {
             toggleCancel={(event) => CancelBtn(event)}
             toggleSave={(e) => toggleSave(e)}
             hoSoUser={hoSoUser}
+            userImg = {userData.img}
           />
         ) : (
-          <Default userData={userData} hoSoUser={hoSoUser} />
+          <Default userData={userData} hoSoUser={hoSoUser}  userImg = {userData.img}/>
         )}
       </div>
     </div>

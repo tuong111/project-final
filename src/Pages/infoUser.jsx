@@ -26,6 +26,7 @@ export default function Infouser(props) {
   const hosoData = useSelector(state => state.hoso.hoso)
   const data = useSelector(state => state.user.user)
 
+  
 
   return (
     <div className="info">

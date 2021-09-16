@@ -1,0 +1,32 @@
+ .hero {
+     
+    width: 100%;
+    height: 500px;
+    background-position: center;
+    background-color: $bgColor;
+    background-repeat: no-repeat;
+    animation-name: example;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-button {
+        width: 50%;
+        max-width: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+            font-size: large;
+            font-weight: bold;
+        }
+    }
+ }
+
+@keyframes example {
+    from {background-image: url('../../img/Galaxy-Gateway-Blogpost-1-1.png');}
+    to {background-image: url('../../img/itil-foundation.jpeg');}
+  }
+  

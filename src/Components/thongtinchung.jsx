@@ -163,13 +163,18 @@ export default function Thongtinchung({  userData, hoSoUser }) {
     e.stopPropagation();
   };
 
-  const [userImg , setUserImg] = useState(userData.img)
+ 
+ const [userImg , setUserImg] = useState(userData.img)
   const uploadAvatar = async (value) => {
     const file = value.target.files[0]
     const base64 = await convertBase64(file)
-    setUserImg(base64)
+    if (base64 !== ''){
+      setUserImg(base64)
+    }
+    
 
   }
+  console.log(userImg)
   const convertBase64 = (file) => {
     return new Promise((resolve, reject ) => {
       const fileReader = new FileReader()
@@ -204,10 +209,10 @@ export default function Thongtinchung({  userData, hoSoUser }) {
             toggleCancel={(event) => CancelBtn(event)}
             toggleSave={(e) => toggleSave(e)}
             hoSoUser={hoSoUser}
-            userImg = {userData.img}
+            userImg = {userImg}
           />
         ) : (
-          <Default userData={userData} hoSoUser={hoSoUser}  userImg = {userData.img}/>
+          <Default userData={userData} hoSoUser={hoSoUser}  userImg = {userImg}/>
         )}
       </div>
     </div>

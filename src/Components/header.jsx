@@ -85,7 +85,7 @@ export default function Header({userID}) {
             Phỏng vấn
           </Link>
           <Link to="/candidate" className="header-item" key="cdd">
-            Ứng viên
+            Quan ly CV
           </Link>
           <Link to="/hr" className="header-item" key="hr">
             Nhân sự

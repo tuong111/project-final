@@ -6,6 +6,7 @@ import { useState } from 'react';
 import swal from 'sweetalert';
 import InfoHeader from '../Components/info-header';
 import hoSoServices from '../Services/getHosoAPI';
+import DetailInfoUser from '../Services/getDetailUserInfo';
 
 export default function Signup(props) {
   const [data, setData] = useState([])
@@ -54,6 +55,14 @@ export default function Signup(props) {
           "user_id" : "",
           "chucdanh" : "",
           "namKN" : ""
+        })
+        DetailInfoUser.addDetailInfo({
+          "user_id" : "",
+          "phone" : "",
+          "dob" : "",
+          "quoctich" : "",
+          "gioitinh" : "",
+          "tinhthanh" : ""
         })
 
         swal({

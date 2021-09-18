@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getHoSoByID } from './../actions/hoso';
 import { getUserID } from './../actions/users';
 
+
 const Default = ({ userData, hoSoUser }) => {
   return (
     <div className="info-container-right-text">
@@ -30,7 +31,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
   const [lastname, setLastName] = useState("");
   const [chucdanh, setChucDanh] = useState("");
   const [namKN, setNamKN] = useState("");
-  let currentImg = user.img
+  let currentImg = userImg
   const handleCancelBtn = (e) => {
     toggleCancel(e);
     dispatch(getUserID({
@@ -151,7 +152,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
   );
 }
 
-export default function Thongtinchung({  userData, hoSoUser }) {
+export default function Thongtinchung({  userData, hoSoUser , ImgUser}) {
   const [clickToggleEdit, setClickTogleEdit] = useState(false);
 
   const CancelBtn = (event) => {
@@ -163,8 +164,12 @@ export default function Thongtinchung({  userData, hoSoUser }) {
     e.stopPropagation();
   };
 
- 
- const [userImg , setUserImg] = useState(userData.img)
+  
+  
+
+  const [userImg , setUserImg] = useState(ImgUser)
+  
+  
   const uploadAvatar = async (value) => {
     const file = value.target.files[0]
     const base64 = await convertBase64(file)
@@ -174,7 +179,7 @@ export default function Thongtinchung({  userData, hoSoUser }) {
     
 
   }
-  console.log(userImg)
+ 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject ) => {
       const fileReader = new FileReader()

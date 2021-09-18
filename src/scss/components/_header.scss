@@ -40,12 +40,13 @@
         }
         img {
             max-width: 35px;
+            max-height: 35px;
             border-radius: 50px;
         }
     }
     &-modal {
         position: absolute;
-        width: 300px;
+        width: 250px;
         right : 0;
         margin-right: 25px;
         display: block;

@@ -9,8 +9,9 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import userServices from '../Services/getUsersAPI';
 import { useDispatch, useSelector } from "react-redux";
-import { getUserID } from './../actions/users';
+import { defaultUser, getUserID } from './../actions/users';
 import { defaultCVList } from "../actions/cvlist";
+import { defaultDetail } from "../actions/detailInfo";
 
 const ModalLogin = ({ props }) => {
   const history = useHistory();
@@ -71,6 +72,8 @@ export default function Header({userID}) {
   const handlelogOut = (value) => {
     localStorage.clear();
     dispatch(defaultCVList())
+    dispatch(defaultUser())
+    dispatch(defaultDetail())
     setClickInfo(value);
     history.push("/");
   };

@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import { getCVID } from './../actions/cvlist';
 import DetailInfoUser from './../Services/getDetailUserInfo';
 import { getDetailByID } from './../actions/detailInfo';
+import userServices from '../Services/getUsersAPI';
+import { getUserID } from '../actions/users';
 
 
 export default function Candidate(props) {
@@ -19,6 +21,11 @@ export default function Candidate(props) {
         .then((res) => {
           dispatch(getDetailByID(res))
         })
+        userServices.getUserByID(localStorage.getItem('id'))
+        .then(
+            (res) => {
+                dispatch(getUserID(res))
+            })
       }, [dispatch]);
     
     

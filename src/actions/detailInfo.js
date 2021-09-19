@@ -20,3 +20,9 @@ export const getDetailByID= (data) => {
         payload : data,
     }
 }
+export const defaultDetail= (data) => {
+    return {
+        type : 'GET_DEFAULT_DETAIL',
+        payload : data,
+    }
+}

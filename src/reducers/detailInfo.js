@@ -22,7 +22,11 @@ const DetailInfoReducer = (state = initialState, action) => {
             }
         
         }
-    
+        case 'GET_DEFAULT_DETAIL' :{
+            return {
+                detailInfo : {}
+            }
+        }
         default:
             return state
     }

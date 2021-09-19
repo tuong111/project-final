@@ -20,3 +20,10 @@ export const getUserID= (id) => {
         payload : id,
     }
 }
+
+export const defaultUser= (data) => {
+    return {
+        type : 'GET_DEFAULT_USER',
+        payload : data,
+    }
+}

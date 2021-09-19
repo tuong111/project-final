@@ -1,25 +1,11 @@
+import { Button } from '@material-ui/core';
 import React from 'react'
-import { Container, Button, Grid } from '@material-ui/core';
-
+import { Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
+import { Container } from '@material-ui/core';
 
-import jsPDF from 'jspdf'
-
-
-export default function CvView({sendClosedCVView, cvData}) {
-    const handleCloseCVView = (value) => {
-        sendClosedCVView(false)
-        
-    }
-    let cvName = cvData.jobungtuyen
-    const PrintCV = () => {
-      let cv = new jsPDF("p" , "pt" , "a4")
-      cv.html(document.querySelector("#cvcontent"), {
-        callback : function(pdf) {
-          pdf.save(`${cvName}.pdf`)
-        }
-      })
-    }
+export default function CvEdit({cvData}) {
+    
     const userData = useSelector(state => state.user.user)
     const userDetail = useSelector(state => state.detailInfo.detailInfo)
   return (
@@ -148,11 +134,11 @@ export default function CvView({sendClosedCVView, cvData}) {
         </div>
         </div>
         <div className="cv-modal-btn">
-        <Button variant="outlined" color="secondary" onClick = {(e)=> handleCloseCVView(e)} >
+        <Button variant="outlined" color="secondary"  >
           CLose
         </Button>
-        <Button variant="outlined" color="primary" onClick = {()=> PrintCV()} >
-          In CV
+        <Button variant="outlined" color="primary"  >
+          Save CV
         </Button>
         </div>
       </Container>

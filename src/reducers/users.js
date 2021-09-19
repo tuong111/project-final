@@ -22,7 +22,11 @@ const userReducer = (state = initialState, action) => {
                 user : currentUser
             }
         }
-    
+        case 'GET_DEFAULT_USER' :{
+            return {
+                user : {}
+            }
+        }
         default:
             return state
     }

@@ -6,6 +6,7 @@ import CvItem from "./cv-item";
 import CVModal from './cv-modal';
 import { useSelector } from 'react-redux';
 import CvView from "./cv-view";
+import CvEdit from './cv-edit';
 
 
 export default function Cv(props) {
@@ -27,6 +28,7 @@ export default function Cv(props) {
        {
          opentViewCV ? <CvView cvData = {cvInfo[cvDatabyIndex]} sendClosedCVView = {(value) => setOpenViewCV(value)}/> : ''
        } 
+       
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12}>

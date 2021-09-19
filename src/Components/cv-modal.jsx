@@ -12,7 +12,7 @@ export default function CvModal({sendClosedModal}) {
 
   return (
     <div className="cv-modal">
-      <Container style = {{position : 'relative'}}>
+      <Container style = {{position : 'relative', overflow : ''}}>
         <div className="cv-modal-container">
         <div className="cv-modal-header mt-20">
           <span className="cv-modal-tenuv">
@@ -60,7 +60,7 @@ export default function CvModal({sendClosedModal}) {
         <Button variant="outlined" color="secondary" onClick = {(e)=> handleCloseModal(e)} >
           CLose
         </Button>
-        <Button variant="outlined" color="primary" onClick = {()=> console.log('Save CV')} >
+        <Button variant="outlined" color="primary" onClick = {()=> console.log('IN CV')} >
           Save CV
         </Button>
         </div>

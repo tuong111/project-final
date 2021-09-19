@@ -22,7 +22,7 @@ const addCVList = async (data) => {
 
 const getCVByID = async (userID) => {
     return new Promise((resolve, reject) => {
-        axios.get(`${responseUrl}/hoso/${userID}`).then(
+        axios.get(`${responseUrl}/cvlist/${userID}`).then(
             res => {
                 const {data} = res
                 resolve(data)
@@ -34,7 +34,7 @@ const getCVByID = async (userID) => {
     })
 }
 const editCVByID = async (id , data) => {
-    const res = await axios.patch(`${responseUrl}/hoso/${id}`, data)
+    const res = await axios.patch(`${responseUrl}/cvlist/${id}`, data)
     return res
 }
 const CVServices = {

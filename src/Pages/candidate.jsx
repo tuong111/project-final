@@ -1,23 +1,34 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from '../Components/header';
 import Cv from '../Components/cv';
 import { useEffect } from 'react';
 import CVServices from '../Services/getCvListAPI';
+import { useDispatch } from 'react-redux';
+import { getCVID } from './../actions/cvlist';
+import DetailInfoUser from './../Services/getDetailUserInfo';
+import { getDetailByID } from './../actions/detailInfo';
+
 
 export default function Candidate(props) {
-    const [CVlist , setCVList] = useState([])
+    const dispatch = useDispatch()
     useEffect(() => {
-        CVServices.getCVlist().then(
-            (res) => setCVList(res)
+        CVServices.getCVByID(localStorage.getItem('id')).then(
+            (res) => dispatch(getCVID(res))
         )
-
-      }, []);
-
-      console.log(CVlist)
+        DetailInfoUser.getDetailInfoByID(localStorage.getItem("id"))
+        .then((res) => {
+          dispatch(getDetailByID(res))
+        })
+      }, [dispatch]);
+    
+    
+     
+    
     return (
         <>
             <Header userID={localStorage.getItem("id")}/>
             <Cv/>
         </>
     )
+
 }

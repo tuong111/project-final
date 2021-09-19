@@ -1,10 +1,32 @@
 .cv {
+    h4 {
+        margin: 0;
+    }
     // position: relative;
     &-title {
         color : red;
         font-weight: bold;
         font-style: italic;
         
+    }
+    &-item{
+        &-title {
+            text-align: center;
+        }
+        &-btn {
+            button {
+                margin: 5px;
+                border-radius: 2px;
+                border : 1px solid $primaryColor;
+                width: 50px;
+                height: 30px;
+                cursor: pointer;
+                &:hover {
+                    opacity: 1.5;
+                    background-color: lightblue;
+                }
+            }
+        }
     }
 
     img {
@@ -26,9 +48,9 @@
         &-container{
             min-height: 600px;
         }
-        &-header {
+        // &-header {
 
-        }
+        // }
         &-tenuv {
             color :#66aebe;
             font-size: 1.5rem;
@@ -54,6 +76,7 @@
             background-color: red;
         }
         &-content {
+            padding : 10px;
             background-color: #66aebe;
         }
         &-btn {
@@ -61,9 +84,15 @@
             justify-content: center;
             gap : 1rem;
             align-items: center;
-            margin-bottom: 1rem;
-
+            margin : 1rem 0;
+            
+        }
+        &-view {
+            &-info{
+                background-color: #dff9fb;
+            }
             
         }
     }
+
 }

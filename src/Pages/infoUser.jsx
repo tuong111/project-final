@@ -26,7 +26,7 @@ export default function Infouser(props) {
     .then((res) => {
       dispatch(getDetailByID(res))
     })
-  }, []);
+  }, [dispatch]);
   const hosoData = useSelector(state => state.hoso.hoso)
   const data = useSelector(state => state.user.user)
   return (

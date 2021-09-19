@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 import InfoHeader from '../Components/info-header';
 import hoSoServices from '../Services/getHosoAPI';
 import DetailInfoUser from '../Services/getDetailUserInfo';
+import CVServices from '../Services/getCvListAPI';
 
 export default function Signup(props) {
   const [data, setData] = useState([])
@@ -64,7 +65,10 @@ export default function Signup(props) {
           "gioitinh" : "",
           "tinhthanh" : ""
         })
-
+        CVServices.addCVList({
+          "user_id" : "",
+          "listCV" : []
+        })
         swal({
             title: "SUCCESS",
             text: "Your account has been registered succesfully",

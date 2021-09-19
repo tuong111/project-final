@@ -31,8 +31,6 @@ export default function CvModal({sendClosedModal}) {
     const [writing , setWriting] = useState('')
     const [sothich , setSothich] = useState('')
     
-
- 
     const SaveCV = () => {
 
       swal("Ban co muon Luu CV ?", {
@@ -62,7 +60,7 @@ export default function CvModal({sendClosedModal}) {
                 }]
             }))
             CVServices.editCVByID(localStorage.getItem('id'), {
-              ...cvList,
+              user_id : cvList.id,
               listCV : [...cvInfo, {
                 jobungtuyen : chucdanhungtuyen,
                 muctieu : muctieu,

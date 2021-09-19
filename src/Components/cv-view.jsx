@@ -4,6 +4,7 @@ import { Container, Button, Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 
 import jsPDF from 'jspdf'
+import { swal } from 'sweetalert';
 
 
 export default function CvView({sendClosedCVView, cvData}) {
@@ -14,9 +15,9 @@ export default function CvView({sendClosedCVView, cvData}) {
     let cvName = cvData.jobungtuyen
     const PrintCV = () => {
       let cv = new jsPDF("p" , "pt" , "a4")
-      cv.html(document.querySelector("#cvcontent"), {
+      cv.html(document.querySelector(".cv-modal-container"), {
         callback : function(pdf) {
-          pdf.save(`${cvName}.pdf`)
+          pdf.save(`CV-${cvName}.pdf`)
         }
       })
     }
@@ -41,7 +42,7 @@ export default function CvView({sendClosedCVView, cvData}) {
           <Grid container spacing = {3} >
             <Grid item xs = {12}>
               <Grid item xs = {6}>
-                <span>MUC TIEU NGHE NGHIEP :</span><br />
+                <span>MUC TIEU :</span><br />
                 <p>{cvData.muctieu}</p>
               </Grid>
               <Grid container xs = {12}>
@@ -66,8 +67,7 @@ export default function CvView({sendClosedCVView, cvData}) {
               </Grid>
             </Grid>
           </Grid>
-        </div>
-        <div className="cv-modal-view-info mt-20">
+          <div className="cv-modal-view-info mt-20">
           <Grid container spacing = {3}>
               <Grid item xs = {6}>
                   <h4>HOC VAN :</h4>
@@ -102,7 +102,7 @@ export default function CvView({sendClosedCVView, cvData}) {
                             NGHE :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" value = {cvData.listen} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -112,7 +112,7 @@ export default function CvView({sendClosedCVView, cvData}) {
                             NOI :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" value = {cvData.speaking} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -122,7 +122,7 @@ export default function CvView({sendClosedCVView, cvData}) {
                             DOC :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" value = {cvData.reading} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -132,7 +132,7 @@ export default function CvView({sendClosedCVView, cvData}) {
                             VIET :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" value = {cvData.writing} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -141,12 +141,14 @@ export default function CvView({sendClosedCVView, cvData}) {
               <Grid item xs = {6}>
                   <h4>SO THICH :</h4>
                   <ul>
-                    <li>So thich 1</li>
+                    <li>{cvData.sothich}</li>
                   </ul>
               </Grid>
           </Grid>
         </div>
         </div>
+        </div>
+
         <div className="cv-modal-btn">
         <Button variant="outlined" color="secondary" onClick = {(e)=> handleCloseCVView(e)} >
           CLose

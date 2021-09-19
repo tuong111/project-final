@@ -4,10 +4,19 @@ import { Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 
-export default function CvEdit({cvData}) {
+export default function CvEdit({cvData, sendClosedEditCV}) {
     
     const userData = useSelector(state => state.user.user)
     const userDetail = useSelector(state => state.detailInfo.detailInfo)
+
+
+    const handleCloseEditCV = (value) => {
+      sendClosedEditCV(false)
+    }
+
+    const UpdateCV = () => {
+
+    }
   return (
     <div className="cv-modal">
       <Container style = {{position : 'relative', overflow : ''}}>
@@ -17,7 +26,7 @@ export default function CvEdit({cvData}) {
             {`${userData['first name']} ${userData['last name']}`}
           </span>
           <p className="cv-modal-job">
-            <h3>{cvData.jobungtuyen}</h3>
+            <input type="text" value = {cvData.jobungtuyen} />
           </p>
           <div className="cv-modal-img">
             <img src={userData.img} alt="" />
@@ -27,8 +36,8 @@ export default function CvEdit({cvData}) {
           <Grid container spacing = {3} >
             <Grid item xs = {12}>
               <Grid item xs = {6}>
-                <span>MUC TIEU NGHE NGHIEP :</span><br />
-                <p>{cvData.muctieu}</p>
+                <span>MUC TIEU :</span><br />
+                <textarea name="" id="" cols="75" rows="2" defaultValue = {cvData.muctieu}></textarea>
               </Grid>
               <Grid container xs = {12}>
                 <Grid  item xs = {4}>
@@ -52,31 +61,30 @@ export default function CvEdit({cvData}) {
               </Grid>
             </Grid>
           </Grid>
-        </div>
-        <div className="cv-modal-view-info mt-20">
+          <div className="cv-modal-view-info mt-20">
           <Grid container spacing = {3}>
               <Grid item xs = {6}>
                   <h4>HOC VAN :</h4>
                   <ul>
-                    <li>{cvData.hocvan}</li>
+                    <li><input type="text" defaultValue = {cvData.hocvan} /></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
                   <h4>KY NANG :</h4>
                   <ul>
-                    <li>{cvData.skills}</li>
+                    <li><input type="text" defaultValue = {cvData.skills} /></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
                   <h4>CHUNG CHI :</h4>
                   <ul>
-                    <li>{cvData.chungchi}</li>
+                    <li><input type="text" defaultValue = {cvData.chungchi} /></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
                   <h4>KINH NGHIEM :</h4>
                   <ul>
-                    <li>{cvData.congtycu}</li>
+                    <li><input type="text" defaultValue = {cvData.congtycu} /></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
@@ -88,7 +96,7 @@ export default function CvEdit({cvData}) {
                             NGHE :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" defaultValue = {cvData.listen} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -98,7 +106,7 @@ export default function CvEdit({cvData}) {
                             NOI :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" defaultValue = {cvData.speaking} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -108,7 +116,7 @@ export default function CvEdit({cvData}) {
                             DOC :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" defaultValue = {cvData.reading} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -118,7 +126,7 @@ export default function CvEdit({cvData}) {
                             VIET :
                           </Grid>
                           <Grid item xs = {8}>
-                            <input type="range" value = '6' max = '10'/>
+                            <input type="range" defaultValue = {cvData.writing} max = '10'/>
                             </Grid>
                         </Grid>
                     </li>
@@ -127,18 +135,19 @@ export default function CvEdit({cvData}) {
               <Grid item xs = {6}>
                   <h4>SO THICH :</h4>
                   <ul>
-                    <li>So thich 1</li>
+                    <li><input type="text"  defaultValue = {cvData.sothich}/></li>
                   </ul>
               </Grid>
           </Grid>
         </div>
         </div>
+        </div>
         <div className="cv-modal-btn">
-        <Button variant="outlined" color="secondary"  >
+        <Button variant="outlined" color="secondary"  onClick = {(e)=> handleCloseEditCV(e)}>
           CLose
         </Button>
-        <Button variant="outlined" color="primary"  >
-          Save CV
+        <Button variant="outlined" color="primary"  onClick = {()=> UpdateCV()}>
+          Update CV
         </Button>
         </div>
       </Container>

@@ -12,6 +12,7 @@ import CvEdit from './cv-edit';
 export default function Cv(props) {
   const [openModal, setOpenModal] = useState(false)
   const [opentViewCV, setOpenViewCV] = useState(false)
+  const [openEditCV , setEditCV] = useState(false)
 
   const cvLists = useSelector(state => state.cvList.cvList)
   const cvInfo = cvLists.listCV
@@ -20,6 +21,7 @@ export default function Cv(props) {
   const getCvDataByIndex = (value) => {
     setCVDataByIndex(value)
   }
+
   return (
     <div className="cv mt-20">
       {
@@ -28,6 +30,11 @@ export default function Cv(props) {
        {
          opentViewCV ? <CvView cvData = {cvInfo[cvDatabyIndex]} sendClosedCVView = {(value) => setOpenViewCV(value)}/> : ''
        } 
+        
+       {
+        openEditCV ? <CvEdit cvData = {cvInfo[cvDatabyIndex]} sendClosedEditCV = {(value) => setEditCV(value)}/> : ''
+       }
+       
        
       <Container>
         <Grid container spacing={3}>
@@ -49,8 +56,12 @@ export default function Cv(props) {
           </Grid>
           {
             cvInfo?.map((e ,index) => {
-              return <Grid item xs={3}>
-                <CvItem cvInfo = {e} getViewCVEvent = {(value) => setOpenViewCV(value)} index = {index} sendCvDatabyIndex = {(value) => getCvDataByIndex(value)}/>
+              return <Grid item xs={3} >
+                <CvItem cvInfo = {e} 
+                getViewCVEvent = {(value) => setOpenViewCV(value)} 
+                getEditCVEvent = {(value) => setEditCV(value)}
+                index = {index} 
+                sendCvDatabyIndex = {(value) => getCvDataByIndex(value)} />
               </Grid>
             })
           }

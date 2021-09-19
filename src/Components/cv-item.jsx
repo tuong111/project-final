@@ -5,16 +5,19 @@ import {
 import React from "react";
 
 
-export default function CvItem({cvInfo , getViewCVEvent, index , sendCvDatabyIndex}) {
+export default function CvItem({cvInfo , getViewCVEvent, index , sendCvDatabyIndex, getEditCVEvent}) {
 
   const sendOpentoCV = () => {
     getViewCVEvent(true)
     sendCvDatabyIndex(index)
   }
-  
+  const sendEdittoCV = () => {
+    getEditCVEvent(true)
+    sendCvDatabyIndex(index)
+  }
   return (
     
-      <Card style = {{minHeight : '300px' , cursor : 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center'}} > 
+      <Card style = {{minHeight : '300px' , display: 'flex', justifyContent: 'center', alignItems: 'center'}} > 
       <div className = 'cv-item-title'>
       <h4>
             CV <br />
@@ -22,7 +25,7 @@ export default function CvItem({cvInfo , getViewCVEvent, index , sendCvDatabyInd
           </h4>
           <img src="https://img.timviec.com.vn/2020/02/mau-cv-xin-viec-viet-tay1.jpg" alt="" />
           <div className="cv-item-btn">
-      <button >Edit</button>
+      <button onClick = {()=> sendEdittoCV()}>Edit</button>
       <button onClick = {() => sendOpentoCV()}>View</button>
       </div>
       </div>

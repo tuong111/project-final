@@ -28,11 +28,11 @@ export default function Cv(props) {
         openModal ? <CVModal sendClosedModal={(value) => setOpenModal(value)} /> : ''
       }
        {
-         opentViewCV ? <CvView cvData = {cvInfo[cvDatabyIndex]} sendClosedCVView = {(value) => setOpenViewCV(value)}/> : ''
+         opentViewCV ? <CvView cvData = {cvInfo[cvDatabyIndex]} sendClosedCVView = {(value) => setOpenViewCV(value)} index = {cvDatabyIndex}/> : ''
        } 
         
        {
-        openEditCV ? <CvEdit cvData = {cvInfo[cvDatabyIndex]} sendClosedEditCV = {(value) => setEditCV(value)}/> : ''
+        openEditCV ? <CvEdit cvData = {cvInfo[cvDatabyIndex]} sendClosedEditCV = {(value) => setEditCV(value)} index = {cvDatabyIndex}/> : ''
        }
        
        
@@ -57,7 +57,7 @@ export default function Cv(props) {
           {
             cvInfo?.map((e ,index) => {
               return <Grid item xs={3} >
-                <CvItem cvInfo = {e} 
+                <CvItem key = {index} cvInfo = {e} 
                 getViewCVEvent = {(value) => setOpenViewCV(value)} 
                 getEditCVEvent = {(value) => setEditCV(value)}
                 index = {index} 

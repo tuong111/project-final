@@ -5,7 +5,8 @@ import  swal  from 'sweetalert';
 import { useDispatch } from 'react-redux';
 import { getCVID } from './../actions/cvlist';
 import CVServices from "../Services/getCvListAPI";
-
+import saveicon from '../img/saveicon.png'
+import closeicon from '../img/closeicon.png'
 
 export default function CvModal({sendClosedModal}) {
     const handleCloseModal = (value) => {
@@ -75,7 +76,9 @@ export default function CvModal({sendClosedModal}) {
                 sothich : sothich
               }]
             })
-            swal("Tao CV thanh cong !!!");
+            swal("Tao CV thanh cong!", {
+              icon: "success",
+            });
             sendClosedModal(false)
             break;
 
@@ -212,10 +215,10 @@ export default function CvModal({sendClosedModal}) {
         </div>
         <div className="cv-modal-btn">
         <Button variant="outlined" color="secondary" onClick = {(e)=> handleCloseModal(e)} >
-          CLose
+        <img src={closeicon} style = {{width : '25px'}} alt="" />CLose
         </Button>
         <Button variant="outlined" color="primary" onClick = {()=> SaveCV()} >
-          Save CV
+        <img src={saveicon} style = {{width : '25px'}} alt="" /> Save
         </Button>
         </div>
       </Container>

@@ -11,6 +11,7 @@ import userServices from '../Services/getUsersAPI';
 import { getUserID } from '../actions/users';
 
 
+
 export default function Candidate(props) {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -35,6 +36,7 @@ export default function Candidate(props) {
         <>
             <Header userID={localStorage.getItem("id")}/>
             <Cv/>
+            
         </>
     )
 

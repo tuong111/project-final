@@ -68,7 +68,8 @@ export default function Header({userID}) {
       res => dispatch(getUserID(res))
     )
 
-  },[])
+  },[userID, dispatch])
+
   const handlelogOut = (value) => {
     localStorage.clear();
     dispatch(defaultCVList())

@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/header";
-import { Button } from "@material-ui/core";
+import { Button, Card } from "@material-ui/core";
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import { useHistory } from 'react-router-dom';
 import swal from "sweetalert";
+import { useDispatch } from 'react-redux';
+import jobServices from '../Services/getjobListAPI';
+import { getJob } from "../actions/joblist";
+import { useSelector } from 'react-redux';
+
+
 
 export default function Home(props) {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    jobServices.getJoblist()
+    .then(
+      (res) => {
+        dispatch(getJob(res))
+      }
+    )
+  }, [dispatch]);
+  
+  const jobList = useSelector(state => state.jobList.jobList)
+
+
   const history = useHistory()
   const btnCreateCV = () => {
     swal("Ban muon tao CV ?", {
@@ -40,6 +59,24 @@ export default function Home(props) {
           <NoteAddIcon fontSize= 'large'/> <span>CREATE CV</span>
         </Button>
         </div>
+      </div>
+      <div className="job-section">
+        {
+          jobList?.map((item , index) => {
+            return (
+              <div key = {index}>
+                <Card>
+                  Nganh nghe : {item.nganhnghe} <br />
+                  Cong ty : {item.company} <br />
+                  Ten job : {item.jobname} <br />
+                  Hot job ? : {item.hotjob} <br />
+                  Salary : {item.salary}
+                </Card>
+              </div>
+
+            )
+          })
+        }
       </div>
     </div>
   );

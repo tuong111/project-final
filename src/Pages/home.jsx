@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import jobServices from '../Services/getjobListAPI';
 import { getJob } from "../actions/joblist";
 import { useSelector } from 'react-redux';
+import Hotjobslider from '../Components/hotJobSlider';
 
 
 
@@ -60,24 +61,7 @@ export default function Home(props) {
         </Button>
         </div>
       </div>
-      <div className="job-section">
-        {
-          jobList?.map((item , index) => {
-            return (
-              <div key = {index}>
-                <Card>
-                  Nganh nghe : {item.nganhnghe} <br />
-                  Cong ty : {item.company} <br />
-                  Ten job : {item.jobname} <br />
-                  Hot job ? : {item.hotjob} <br />
-                  Salary : {item.salary}
-                </Card>
-              </div>
-
-            )
-          })
-        }
-      </div>
+      <Hotjobslider/>
     </div>
   );
 }

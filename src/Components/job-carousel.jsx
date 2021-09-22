@@ -11,27 +11,42 @@ export default function JobCarousel(props) {
 
     // Chia mang lon thang mang 3 item nho :
     let newJoblist = [...jobList]
-    
+    let hotJobList = newJoblist.filter(
+      (item) => item.hotjob === 1
+    )
+      
+
     let Arr = []
     let i = 0
-    while(i < newJoblist.length){
-        Arr.push([newJoblist[i],newJoblist[i+1],newJoblist[i+2],newJoblist[i+3]])
+    while(i < hotJobList.length){
+        Arr.push([hotJobList[i],hotJobList[i+1],hotJobList[i+2],hotJobList[i+3]])
         i = i+4
     }
 
     
 
     const [x, setx] = useState(0)
+    const [current , setCurrent] = useState(1)
 
     const goLeft = () => {
-       (x ===0) ? setx(-100 * (Arr.length-1)) : setx(x + 100)
+       (x ===0) ? setx(-100 * (Arr.length-1)) : setx(x + 100);
+
+       (current === 1) ? setCurrent(Arr.length) : setCurrent(current - 1)
+       
     }
 
     const goRight = () => {
-       (x=== -100 * (Arr.length-1)) ? setx(0) : setx( x - 100) 
+       (x=== -100 * (Arr.length-1)) ? setx(0) : setx( x - 100) ;
+
+       (current === Arr.length) ? setCurrent(1) : setCurrent(current + 1)
     }
     return (
-        <div className="jobcarousel">
+        <div className="jobcarousel mt-50">
+          <div className="jobcarousel-title">
+            <h3>
+              DANH SACH VIEC LAM DANG HOT
+            </h3>
+          </div>
         <div className="slider">
             
       {
@@ -48,6 +63,7 @@ export default function JobCarousel(props) {
         </div>
         <div className="jobcarousel-btn">
         <Button variant="outlined" onClick = {() => goLeft()}> PREV </Button>
+        <span> {current}/{Arr.length} </span>
         <Button variant="outlined" onClick = {() => goRight()}>NEXT </Button>
         </div>
         </div>

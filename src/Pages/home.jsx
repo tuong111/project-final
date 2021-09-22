@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Components/header";
 import {  Button } from "@material-ui/core";
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
@@ -8,23 +8,51 @@ import { useDispatch } from 'react-redux';
 import jobServices from '../Services/getjobListAPI';
 import { getJob } from "../actions/joblist";
 import JobCarousel from "../Components/job-carousel";
+import Aboutus from "../Components/aboutus";
+import CVServices from './../Services/getCvListAPI';
+import userServices from './../Services/getUsersAPI';
 
 
 
 
 export default function Home(props) {
+  const [listCV, setListCV] = useState([])
+  const [listuser , setListUser] = useState([])
+  const [joblist , setjobList] = useState([])
   const dispatch = useDispatch()
   useEffect(() => {
     jobServices.getJoblist()
       .then(
         (res) => {
+          setjobList(res)
           dispatch(getJob(res))
         }
       )
+    CVServices.getCVlist()
+    .then(
+      (res) => {
+        setListCV(res)
+      }
+    )
+    userServices.getUserInfo()
+    .then(
+      (res) => setListUser(res)
+    )
   }, [dispatch]);
+// Lay all CV
+  let newListCV = [...listCV]
+  let countArr = []
+  newListCV.forEach(
+    e => countArr.push(e.listCV)
+  )
+  let sumCV = 0
+  countArr.forEach(
+    e => sumCV = sumCV + e.length
+  )
+
+
 
   
-
 
   const history = useHistory()
   const btnCreateCV = () => {
@@ -62,25 +90,8 @@ export default function Home(props) {
           </Button>
         </div>
       </div>
-      {/* <Container>
-      <Grid container spacing={3}>
-        
-      <Grid item xs={12}>DANH SACH CAC HOT JOB</Grid>
-      
-      {
-          jobList?.map(
-            (item , index) => {
-              return (
-                <Grid item xs={3} >
-                  <HotJobItem key = {index}/>
-              </Grid>
-              )
-            }
-          )
-        }
-      </Grid>
-      </Container> */}
       <JobCarousel/> 
+      <Aboutus sumCV = {sumCV} sumUsers = {listuser.length} sumJobs = {joblist.length}/>
       </div>
       
     </div>

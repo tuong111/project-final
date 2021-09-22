@@ -87,9 +87,6 @@ export default function Header({userID}) {
           <Link to="/"> JEST W </Link>
         </div>
         <div className="header-title">
-          <Link to="/interview" className="header-item" key="itv">
-            Phỏng vấn
-          </Link>
           <Link to="/candidate" className="header-item" key="cdd">
             Quan ly CV
           </Link>

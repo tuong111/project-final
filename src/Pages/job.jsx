@@ -1,11 +1,12 @@
 import React from 'react'
+import Header from '../Components/header'
 
 export default function Job(props) {
     
 
     return (
-        <>
-            JOB PAGE
-        </>
+        <div className="job">
+            <Header/>
+        </div>
     )
 }

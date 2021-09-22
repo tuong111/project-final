@@ -1,0 +1,38 @@
+.about {
+    width: 80%;
+    margin: auto;
+    min-height: 400px;
+    &-container {
+        text-align: center;
+    }
+    &-header {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    &-count {
+        &-list {
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &-item {
+            margin: 20px;
+            min-width: 250px;
+            &__img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+                img {
+                    width: 150px;
+                }
+            }
+            &__detail {
+                font-size: 1.2rem;
+                font-weight: bold;
+                font-style: italic;
+            }
+        }
+    }
+}

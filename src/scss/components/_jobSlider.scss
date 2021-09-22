@@ -25,6 +25,33 @@
         border : 1px solid blueviolet;
     
     }
+    &-card {
+        &-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &-img {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                max-width: 80px;
+                border-radius: 10px;
+                border : 1px solid $primaryColor;
+            }
+        }
+        &-detail {
+            text-align: left;
+            width: 60%;
+        }
+        &-btn {
+            text-align: center;
+            width: 100%;
+        }
+    }
 }
 
 .jobcarousel {
@@ -34,5 +61,16 @@
             margin : 0 15px;
         }
     }
+    &-title {
+        margin: auto;
+        text-align: left;
+        width: 80%;
+        h3 {
+            font-style: italic;
+            color : red;
+        }
+    }
 }
+
+
 

@@ -11,6 +11,7 @@ import JobCarousel from "../Components/job-carousel";
 import Aboutus from "../Components/aboutus";
 import CVServices from './../Services/getCvListAPI';
 import userServices from './../Services/getUsersAPI';
+import JobPart from "../Components/job-part";
 
 
 
@@ -49,6 +50,28 @@ export default function Home(props) {
   countArr.forEach(
     e => sumCV = sumCV + e.length
   )
+// sort theo tung nganh nghe
+  let newJobList = [...joblist]
+  let ITjob = []
+  newJobList.forEach(
+    (e) => {
+      e.nganhnghe === 1 ? ITjob.push(e) : ITjob.push()
+    }
+  )
+  let Salerjob = []
+  newJobList.forEach(
+    (e) => {
+      e.nganhnghe === 2 ? Salerjob.push(e) : Salerjob.push()
+    }
+  )
+  let Ecomjob = []
+  newJobList.forEach(
+    (e) => {
+      e.nganhnghe === 3 ? Ecomjob.push(e) : Ecomjob.push()
+    }
+  )
+  
+
 
 
 
@@ -90,7 +113,8 @@ export default function Home(props) {
           </Button>
         </div>
       </div>
-      <JobCarousel/> 
+      <JobCarousel/>
+      <JobPart ITjob = {ITjob.length} Salerjob = {Salerjob.length} Ecomjob = {Ecomjob.length}/> 
       <Aboutus sumCV = {sumCV} sumUsers = {listuser.length} sumJobs = {joblist.length}/>
       </div>
       

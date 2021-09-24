@@ -2,6 +2,7 @@
 import { Card, Grid } from '@material-ui/core'
 import React from 'react'
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -13,6 +14,10 @@ export default function HotJobItem({ x, groupData }) {
     return el != null;
   });
 
+  const history = useHistory()
+  const ViewDetailjob = (value) => {
+    history.push(`/jobdetail/${value}`)
+  }
   return (
     <div className="slide" style={{ transform: `translateX(${x}%)` }}>
 
@@ -33,7 +38,7 @@ export default function HotJobItem({ x, groupData }) {
                         <b>Luong :</b> {item.salary}
                       </p>
                     <div className="slide-card-btn">
-                  <Button variant="contained" color = "primary">Ung tuyen</Button>
+                  <Button variant="contained" color = "primary" onClick = {() => ViewDetailjob(item.id) } >Xem chi tiet</Button>
                   </div>
                     </div>
                   </div>

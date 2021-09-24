@@ -73,12 +73,16 @@
             position: absolute;
             right: 0;
             top :0;
-            min-width: 120px;
-            min-height: 150px;
+            max-width: 120px;
+            max-height: 150px;
             border-radius: 5px;
             border: 1px solid $primaryColor;
             margin-right : 2rem;
             background-color: red;
+            img {
+                max-width: 120px;
+                max-height: 150px;
+            }
         }
         &-content {
             padding : 10px;

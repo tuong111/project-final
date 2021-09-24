@@ -1,0 +1,43 @@
+.jobpart {
+    width: 80%;
+    margin: auto;
+    min-height: 300px;
+    &-container {
+        text-align: center;
+    }
+    &-header {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    &-count {
+        &-list {
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &-item {
+            margin: 20px;
+            min-width: 250px;
+            &__img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+                img {
+                    width: 150px;
+                }
+                &:hover {
+                    background-color: #48dbfb;
+                    border-radius: 5%;
+                    cursor: pointer;
+                }
+            }
+            &__detail {
+                font-size: 1rem;
+                font-weight: bold;
+                font-style: italic;
+            }
+        }
+    }
+}

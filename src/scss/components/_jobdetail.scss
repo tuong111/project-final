@@ -1,0 +1,37 @@
+.job-detail {
+    &-container {
+        width: 80%;
+        margin: auto;
+        min-height: 800px;
+        border: 1px solid $primaryColor;
+    }
+    &__header {
+        min-height: 250px;
+        border: 1px solid $primaryColor;
+        display: flex;
+        align-items: center;
+        &-logo {
+            width: 250px;
+            border-right: 1px solid $primaryColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+            img {
+                max-width: 250px;             
+            }
+        }
+    }
+    &__content {
+        width: calc(100% - 250px);
+        display: flex;
+        align-items: center;
+        &-l {
+            width: 80%;
+
+        }
+        &-r {
+            width: 20%;
+        }
+    }
+}

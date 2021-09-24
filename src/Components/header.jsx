@@ -90,11 +90,11 @@ export default function Header({userID}) {
           <Link to="/candidate" className="header-item" key="cdd">
             Quan ly CV
           </Link>
-          <Link to="/hr" className="header-item" key="hr">
-            Nhân sự
-          </Link>
           <Link to="/job" className="header-item" key="job">
             Việc làm
+          </Link>
+          <Link to="/quanlyjob" className="header-item" key="hr">
+            Quan ly viec lam
           </Link>
         </div>
         <div className={checkLogin ? "header-left" : "inactive"}>

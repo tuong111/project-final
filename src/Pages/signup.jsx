@@ -63,7 +63,8 @@ export default function Signup(props) {
           "dob" : "",
           "quoctich" : "",
           "gioitinh" : "",
-          "tinhthanh" : ""
+          "tinhthanh" : "",
+          "jobungtuyen" : []
         })
         CVServices.addCVList({
           "user_id" : "",

@@ -23,7 +23,7 @@ export default function JobItem({jobdata}) {
                     <h4> Luong : {jobdata.salary} VND</h4>
                 </div>
                 <div className="job-listinfo-item__content-right">
-                <Button variant="contained" color = "primary" onClick={()=> ViewJobDetail(jobdata.id)}>Xem chi tiet</Button>
+                <Button variant="outlined" color = "primary" onClick={()=> ViewJobDetail(jobdata.id)}>Xem chi tiet</Button>
                 </div>
             </div>
         </div>

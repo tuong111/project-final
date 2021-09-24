@@ -1,0 +1,41 @@
+.quanlyjob {
+
+    &-container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        gap : 20px;
+        min-height: 900px;
+    }
+    &-content {
+        width: 70%;
+        &__job {
+            margin-bottom: 20px;
+            width: 100%;
+            min-height: 500px;
+            height: 500px;
+            border : 1px solid $primaryColor;
+            overflow: scroll;
+            overflow-x: hidden;
+            &-header {
+                margin: 20px;
+                border : 1px solid $primaryColor;
+            }
+        }
+
+    }
+    &-banner {
+        width: 30%;
+        border : 1px solid $primaryColor;
+        animation: changeColor 15s infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+@keyframes changeColor {
+    from {background : $primaryColor;}
+    50% {background : yellow;} /* ignored */
+    to {background : pink;}
+  }

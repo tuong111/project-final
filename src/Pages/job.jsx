@@ -6,23 +6,39 @@ import { useDispatch } from 'react-redux';
 import jobServices from '../Services/getjobListAPI';
 import { getJob } from '../actions/joblist';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router';
 
 export default function Job(props) {
+    const location = useLocation()
+    const findID = location.state? location.state.type : 0
+    
+    
     const [joblist , setjobList] = useState([])
     const dispatch = useDispatch()
     useEffect(() => {
         jobServices.getJoblist()
           .then(
             (res) => {
-                setjobList(res)
+                if (findID === 0) {
+                    setjobList(res)
+                }else {
+                    setjobList(res.filter(
+                        (e , i) => {
+                            return e.nganhnghe === Number(findID)
+                        }
+                    ))
+                }
+                
+
                 dispatch(getJob(res))
             }
           )
 
-      }, [dispatch]);
+      }, [dispatch, findID]);
+      
     
     const jobArr = useSelector(state => state.jobList.jobList)
-
+ 
     
     
     const setJobFind = (value) => {
@@ -53,7 +69,8 @@ export default function Job(props) {
                             <div className="job-search-item">
                                 <span>Chon nganh nghe </span>
                                 <NativeSelect id="select" style={{ width: '200px', textAlign: 'right' }} 
-                                onChange = {(e) => setJobFind(e.target.value)}>
+                                onChange = {(e) => setJobFind(e.target.value)}
+                                defaultValue = {findID}>
                                     <option value="0">Tat ca</option>
                                     <option value="1">IT</option>
                                     <option value="2">Ban hang</option>

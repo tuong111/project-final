@@ -38,7 +38,7 @@ export default function HotJobItem({ x, groupData }) {
                         <b>Luong :</b> {item.salary}
                       </p>
                     <div className="slide-card-btn">
-                  <Button variant="contained" color = "primary" onClick = {() => ViewDetailjob(item.id) } >Xem chi tiet</Button>
+                  <Button variant="outlined" color = "primary" onClick = {() => ViewDetailjob(item.id) } >Xem chi tiet</Button>
                   </div>
                     </div>
                   </div>

@@ -7,11 +7,15 @@ import { getCVID } from './../actions/cvlist';
 import CVServices from "../Services/getCvListAPI";
 import saveicon from '../img/saveicon.png'
 import closeicon from '../img/closeicon.png'
+import { useHistory } from 'react-router-dom';
+
+
 
 export default function CvModal({sendClosedModal}) {
+    
     const handleCloseModal = (value) => {
         sendClosedModal(false)
-        // value.stopPropagation();
+        
     }
 
     const dispatch = useDispatch()
@@ -31,21 +35,39 @@ export default function CvModal({sendClosedModal}) {
     const [reading , setReading] = useState('')
     const [writing , setWriting] = useState('')
     const [sothich , setSothich] = useState('')
+
+    const history = useHistory()
     
     const SaveCV = () => {
-
-      swal("Ban co muon Luu CV ?", {
-        buttons: {
-          cancel: "Cancel!",
-          OK: true,
-        },
-      })
-      .then((value) => {
-        switch (value) {
-          
-          case "OK":
-            dispatch(getCVID({
-              ...cvList,
+      if (localStorage.getItem('isLogin') === 1){
+        swal("Ban co muon Luu CV ?", {
+          buttons: {
+            cancel: "Cancel!",
+            OK: true,
+          },
+        })
+        .then((value) => {
+          switch (value) {
+            
+            case "OK":
+              dispatch(getCVID({
+                ...cvList,
+                  listCV : [...cvInfo, {
+                    jobungtuyen : chucdanhungtuyen,
+                    muctieu : muctieu,
+                    hocvan : hocvan,
+                    skills : skills,
+                    chungchi : chungchi,
+                    congtycu : kinhnghiem,
+                    listen : listen,
+                    speaking : speaking,
+                    reading : reading,
+                    writing : writing,
+                    sothich : sothich
+                  }]
+              }))
+              CVServices.editCVByID(localStorage.getItem('id'), {
+                user_id : cvList.id,
                 listCV : [...cvInfo, {
                   jobungtuyen : chucdanhungtuyen,
                   muctieu : muctieu,
@@ -59,33 +81,42 @@ export default function CvModal({sendClosedModal}) {
                   writing : writing,
                   sothich : sothich
                 }]
-            }))
-            CVServices.editCVByID(localStorage.getItem('id'), {
-              user_id : cvList.id,
-              listCV : [...cvInfo, {
-                jobungtuyen : chucdanhungtuyen,
-                muctieu : muctieu,
-                hocvan : hocvan,
-                skills : skills,
-                chungchi : chungchi,
-                congtycu : kinhnghiem,
-                listen : listen,
-                speaking : speaking,
-                reading : reading,
-                writing : writing,
-                sothich : sothich
-              }]
-            })
-            swal("Tao CV thanh cong!", {
-              icon: "success",
-            });
-            sendClosedModal(false)
-            break;
-
-          default:
-            swal("Huy Luu CV");
-        }
-      });
+              })
+              swal("Tao CV thanh cong!", {
+                icon: "success",
+              });
+              sendClosedModal(false)
+              break;
+  
+            default:
+              swal("Huy Luu CV");
+          }
+        });
+      }else {
+        swal("Ban phai dang nhap de thuc hien thao tac nay !", {
+          icon: "info",
+          buttons: {
+            cancel: "Cancel!",
+            catch: {
+              text: "Go to Sign In",
+              value: "catch"
+            },
+          },
+        })
+          .then((value) => {
+            switch (value) {
+    
+              case "defeat":
+                break;
+    
+              case "catch":
+                history.push('/signin')
+                break;
+    
+              default:
+            }
+          });
+      }
 
     }
   return (

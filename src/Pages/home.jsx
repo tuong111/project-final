@@ -79,28 +79,55 @@ export default function Home(props) {
 
   const history = useHistory()
   const btnCreateCV = () => {
-    swal("Ban muon tao CV ?", {
-      buttons: {
-        cancel: "Cancel!",
-        catch: {
-          text: "Go to CV PAGE",
-          value: "catch"
+    if (localStorage.getItem('isLogin') === 1) {
+      swal("Ban muon tao CV ?", {
+        buttons: {
+          cancel: "Cancel!",
+          catch: {
+            text: "Go to CV PAGE",
+            value: "catch"
+          },
         },
-      },
-    })
-      .then((value) => {
-        switch (value) {
-
-          case "defeat":
-            break;
-
-          case "catch":
-            history.push('/candidate')
-            break;
-
-          default:
-        }
-      });
+      })
+        .then((value) => {
+          switch (value) {
+  
+            case "defeat":
+              break;
+  
+            case "catch":
+              history.push('/candidate')
+              break;
+  
+            default:
+          }
+        });
+    }else {
+      swal("Ban phai dang nhap de thuc hien thao tac nay !", {
+        icon: "info",
+        buttons: {
+          cancel: "Cancel!",
+          catch: {
+            text: "Go to Sign In",
+            value: "catch"
+          },
+        },
+      })
+        .then((value) => {
+          switch (value) {
+  
+            case "defeat":
+              break;
+  
+            case "catch":
+              history.push('/signin')
+              break;
+  
+            default:
+          }
+        });
+    }
+    
   }
   return (
     <div className="home">

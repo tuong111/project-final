@@ -9,6 +9,7 @@ import Signup from './signup';
 import Infouser from './infoUser';
 import JobDetail from './job-detail';
 import Quanlyjob from './quanlyjob';
+import Tuyendung from './tuyendung';
 
 export default function Pages(props) {
 
@@ -25,6 +26,7 @@ export default function Pages(props) {
                 <Route path = '/signin' component={Signin}/>
                 <Route path = '/signup' component={Signup}/>
                 <Route path = '/info' component = {Infouser}/>
+                <Route path = '/tuyendung' component = {Tuyendung}/>
             </Switch>
         </Router>
     )

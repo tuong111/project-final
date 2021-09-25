@@ -96,6 +96,9 @@ export default function Header({userID}) {
           <Link to="/quanlyjob" className="header-item" key="hr">
             Quan ly viec lam
           </Link>
+          <Link to="/tuyendung" target={"_blank"}  className="header-item" key="hr">
+            Nha tuyen dung
+          </Link>
         </div>
         <div className={checkLogin ? "header-left" : "inactive"}>
           <span>

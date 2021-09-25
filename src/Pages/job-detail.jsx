@@ -6,11 +6,16 @@ import swal from 'sweetalert';
 import Header from './../Components/header';
 import jobServices from './../Services/getjobListAPI';
 import { useHistory } from 'react-router-dom';
+import DetailInfoUser from './../Services/getDetailUserInfo';
+import { useDispatch } from 'react-redux';
+import { getDetailByID } from './../actions/detailInfo';
+import { useSelector } from 'react-redux';
 
 export default function JobDetail(props) {
 
   const { id } = useParams()
   const [jobdetail, setJobDetail] = useState({})
+  const dispatch = useDispatch()
   useEffect(() => {
     jobServices.getJobByID(id)
       .then(
@@ -18,7 +23,15 @@ export default function JobDetail(props) {
           setJobDetail(res)
         }
       )
-  }, [id]);
+      DetailInfoUser.getDetailInfoByID(localStorage.getItem("id"))
+      .then((res) => {
+        dispatch(getDetailByID(res))
+      })
+  }, [id, dispatch]);
+
+  // Lay DS cac job da luu va ung tuyen de bat dieu kien :
+
+  const detailUser = useSelector(state => state.detailInfo.detailInfo)
 
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -39,9 +52,45 @@ export default function JobDetail(props) {
     },
   }));
   const history = useHistory()
-  const Ungtuyen= () => {
-    if (localStorage.getItem('isLogin') === 1) {
 
+  const Ungtuyen= () => {
+    if (localStorage.getItem('isLogin')) {
+      swal("Ban muon Ung tuyen vao job", {
+        icon: "info",
+        buttons: {
+          cancel: "Cancel!",
+          catch: {
+            text: "OK",
+            value: "catch"
+          },
+        },
+      })
+        .then((value) => {
+          switch (value) {
+  
+            case "defeat":
+              break;
+  
+            case "catch":
+              if ((detailUser.jobdaungtuyen).includes(Number(id)) !== true) {
+                DetailInfoUser.editDetailInfo(localStorage.getItem("id"),{
+                  ...detailUser,
+                  jobdaungtuyen : [...detailUser.jobdaungtuyen,Number(id)]
+                })
+                swal("Ban da ung tuyen thanh cong",{
+                  icon : "success"
+                })
+                history.push('/job')
+              }else {
+                swal("Job nay da co trong DS ung tuyen cua ban",{
+                  icon : "warning"
+                })
+              }
+              break;
+  
+            default:
+          }
+        });
     }else {
       swal("Ban phai dang nhap de thuc hien thao tac nay !", {
         icon: "info",
@@ -69,8 +118,43 @@ export default function JobDetail(props) {
     }
   }
   const LuuJob = () => {
-    if (localStorage.getItem('isLogin') === 1) {
-      
+    if (localStorage.getItem('isLogin')) {
+      swal("Ban muon Luu lai job", {
+        icon: "info",
+        buttons: {
+          cancel: "Cancel!",
+          catch: {
+            text: "OK",
+            value: "catch"
+          },
+        },
+      })
+        .then((value) => {
+          switch (value) {
+  
+            case "defeat":
+              break;
+  
+            case "catch":
+              if ((detailUser.jobdaluu).includes(Number(id)) !== true) {
+                DetailInfoUser.editDetailInfo(localStorage.getItem("id"),{
+                  ...detailUser,
+                  jobdaluu : [...detailUser.jobdaluu,Number(id)]
+                })
+                swal("Ban da Luu job thanh cong",{
+                  icon : "success"
+                })
+                history.push('/job')
+              }else {
+                swal("Job nay da co trong DS da luu cua ban",{
+                  icon : "warning"
+                })
+              }
+              break;
+  
+            default:
+          }
+        });
     }else {
       swal("Ban phai dang nhap de thuc hien thao tac nay !", {
         icon: "info",
@@ -108,6 +192,7 @@ export default function JobDetail(props) {
           <div className="job-detail__content">
             <div className="job-detail__content-l ml-20">
               <h3>{jobdetail.company}</h3>
+              <h4>{jobdetail.jobname}</h4>
               <h4>Luong : {jobdetail.salary}</h4>
               <h4>Dia diem lam viec : {jobdetail.noilamviec} </h4>
             </div>

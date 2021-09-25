@@ -12,14 +12,19 @@
         &__job {
             margin-bottom: 20px;
             width: 100%;
-            min-height: 500px;
-            height: 500px;
             border : 1px solid $primaryColor;
-            overflow: scroll;
-            overflow-x: hidden;
             &-header {
                 margin: 20px;
                 border : 1px solid $primaryColor;
+                p {
+                    margin: 20px;
+                }
+            }
+            &-item {
+                margin: 20px;
+                height: 400px;
+                overflow: scroll;
+                overflow-x: hidden;
             }
         }
 
@@ -32,7 +37,31 @@
         justify-content: center;
         align-items: center;
     }
+    &-item {
+        margin-bottom: 20px;
+        border: $primaryColor 1px solid;
+        display: flex;
+        &__logo {
+            width: 20%;
+            img {
+                max-width: 150px;
+                vertical-align: middle;
+                border-right: 1px solid $primaryColor;
+            }
+        }
+        &__content {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            &-left {
+                width: 80%;
+            }
+            &-right {
+                width: 20%;
+            }
+        }
 
+    }
 }
 @keyframes changeColor {
     from {background : $primaryColor;}

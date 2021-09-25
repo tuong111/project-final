@@ -78,8 +78,11 @@ export default function Home(props) {
   
 
   const history = useHistory()
+  
   const btnCreateCV = () => {
-    if (localStorage.getItem('isLogin') === 1) {
+    console.log(localStorage.getItem('isLogin'))
+    if (localStorage.getItem('isLogin')) {
+      
       swal("Ban muon tao CV ?", {
         buttons: {
           cancel: "Cancel!",

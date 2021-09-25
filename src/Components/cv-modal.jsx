@@ -39,7 +39,7 @@ export default function CvModal({sendClosedModal}) {
     const history = useHistory()
     
     const SaveCV = () => {
-      if (localStorage.getItem('isLogin') === 1){
+      if (localStorage.getItem('isLogin')){
         swal("Ban co muon Luu CV ?", {
           buttons: {
             cancel: "Cancel!",

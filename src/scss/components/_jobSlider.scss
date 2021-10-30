@@ -1,0 +1,38 @@
+.slider {
+    width: 80%;
+    margin : auto;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide { 
+    transition: 1.3s;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 20px;
+    
+    &-container {
+        width: 80%;
+    }
+    &-item {
+        min-width: 20%;
+        min-height: 50px;
+        border : 1px solid blueviolet;
+    
+    }
+}
+
+.jobcarousel {
+    text-align: center;
+    &-btn {
+        button {
+            margin : 0 15px;
+        }
+    }
+}
+

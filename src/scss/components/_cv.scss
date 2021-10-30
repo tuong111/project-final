@@ -30,7 +30,7 @@
     }
 
     img {
-        width: 120px;
+        width: 150px;
         
     }
     &-modal {
@@ -46,6 +46,12 @@
         border-radius: 5px;
         &-container{
             min-height: 600px;
+            span {
+                margin-left: 5px ;
+            }
+            p {
+                margin-left: 5px ;
+            }
         }
         // &-header {
 

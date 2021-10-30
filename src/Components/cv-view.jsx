@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux';
 
 import jsPDF from 'jspdf'
 import swal from 'sweetalert';
-
+import printicon from '../img/printicon.png'
+import closeicon from '../img/closeicon.png'
 
 export default function CvView({ sendClosedCVView, cvData }) {
   const handleCloseCVView = (value) => {
@@ -62,26 +63,26 @@ export default function CvView({ sendClosedCVView, cvData }) {
               <Grid  xs={12}>
                 <Grid item xs={6}>
                   <span>MUC TIEU :</span><br />
-                  <p>{cvData.muctieu}</p>
+                  <span>{cvData.muctieu}</span>
                 </Grid>
                 <Grid container xs={12}>
                   <Grid item xs={4}>
-                    Gioi tinh : {userDetail.gioitinh === 1 ? 'Nam' : userDetail.gioitinh === 2 ? 'Nu' : 'Khac'}
+                    <span>Gioi tinh : {userDetail.gioitinh === 1 ? 'Nam' : userDetail.gioitinh === 2 ? 'Nu' : 'Khac'}</span>
                   </Grid>
                   <Grid item xs={4}>
-                    Dien thoai : {userDetail.phone}
+                    <span>Dien thoai : {userDetail.phone}</span> 
                   </Grid>
                   <Grid item xs={4}>
 
                   </Grid>
                   <Grid item xs={4}>
-                    Ngay sinh : {userDetail.dob}
+                    <span>Ngay sinh : {userDetail.dob}</span>
                   </Grid>
                   <Grid item xs={4}>
-                    Email : {userData.email}
+                    <span>Email : {userData.email}</span>
                   </Grid>
                   <Grid item xs={4}>
-                    Quoc tich : {userDetail.quoctich}
+                    <span>Quoc tich : {userDetail.quoctich}</span>
                   </Grid>
                 </Grid>
               </Grid>
@@ -170,10 +171,10 @@ export default function CvView({ sendClosedCVView, cvData }) {
 
         <div className="cv-modal-btn">
           <Button variant="outlined" color="secondary" onClick={(e) => handleCloseCVView(e)} >
-            CLose
+          <img src={closeicon} style = {{width : '25px'}} alt="" />CLose
           </Button>
           <Button variant="outlined" color="primary" onClick={() => PrintCV()} >
-            In CV
+          <img src={printicon} style = {{width : '25px'}} alt="" />In CV
           </Button>
         </div>
       </Container>

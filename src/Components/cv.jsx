@@ -57,7 +57,7 @@ export default function Cv(props) {
           {
             cvInfo?.map((e ,index) => {
               return <Grid item xs={3} >
-                <CvItem key = {index} cvInfo = {e} 
+                <CvItem key = {e.id} cvInfo = {e} 
                 getViewCVEvent = {(value) => setOpenViewCV(value)} 
                 getEditCVEvent = {(value) => setEditCV(value)}
                 index = {index} 

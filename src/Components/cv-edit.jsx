@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 import  swal  from 'sweetalert';
 import CVServices from './../Services/getCvListAPI';
+import saveicon from '../img/saveicon.png'
+import closeicon from '../img/closeicon.png'
 
 export default function CvEdit({cvData, sendClosedEditCV , index}) {
     
@@ -75,12 +77,16 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
               ...cvList,
               listCV : [...cvArray]
             })
-            swal("Cap nhat CV thanh cong !!!");
+            swal("Cap nhat CV thanh!", {
+              icon: "success",
+            });
             sendClosedEditCV(false)
             break;
 
           default:
-            swal("Huy Cap nhat CV");
+            swal("Huy Cap nhat CV",{
+              icon : 'info'
+            });
         }
       });
 
@@ -212,10 +218,10 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
         </div>
         <div className="cv-modal-btn">
         <Button variant="outlined" color="secondary"  onClick = {(e)=> handleCloseEditCV(e)}>
-          CLose
+        <img src={closeicon} style = {{width : '25px'}} alt="" />CLose
         </Button>
         <Button variant="outlined" color="primary"  onClick = {()=> UpdateCV()}>
-          Update CV
+        <img src={saveicon} style = {{width : '25px'}} alt="" /> Update
         </Button>
         </div>
       </Container>

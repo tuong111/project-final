@@ -31,6 +31,10 @@ export default function CvView({ sendClosedCVView, cvData }) {
                 pdf.save(`CV-${cvName}.pdf`)
               }
             })
+            cv.setLanguage("vi")
+            cv.addFont("ConsolasHex.ttf", "ConsolasHex", "Bold")
+            cv.setFont("ConsolasHex","Bold")
+            cv.setFontSize(12)
             swal("In CV thanh cong !")
             break;
 

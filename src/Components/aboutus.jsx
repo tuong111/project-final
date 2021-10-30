@@ -12,7 +12,7 @@ export default function Aboutus({sumCV, sumUsers , sumJobs}) {
                 <div className="about-title">
                     <div className="about-count">
                         <div className="about-header">
-                            <span>SO LUONG HO SO</span>
+                            <span>SỐ LƯỢNG HỒ SƠ</span>
                         </div>
                         <div className="about-count-list">
                             <div className="about-count-item">
@@ -31,7 +31,7 @@ export default function Aboutus({sumCV, sumUsers , sumJobs}) {
                                 </div>
                                 <div className="about-count-item__detail">
                                 <span>
-                                        {sumUsers} USERS
+                                        {sumUsers} người dùng
                                     </span>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@ export default function Aboutus({sumCV, sumUsers , sumJobs}) {
                                 <img src={jobIcon} alt="" />
                                 </div>
                                 <div className="about-count-item__detail">
-                                {sumJobs} JOBS
+                                {sumJobs} việc làm
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ export default function Aboutus({sumCV, sumUsers , sumJobs}) {
                     </div>
                     <div className="about-detail">
                         <p>
-                            Day la trang web tuyen dung duoc thuc hien boi Nguyen Thanh Tuong <br />
+                            Đây là trang web được thực hiện bởi Nguyễn Thành Tường - 2021 <br />
                         </p>
                     </div>
                 </div>

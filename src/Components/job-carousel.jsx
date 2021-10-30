@@ -9,7 +9,7 @@ import HotJobItem from './hotjob-item';
 export default function JobCarousel(props) {
     let jobList = useSelector(state => state.jobList.jobList)
 
-    // Chia mang lon thang mang 3 item nho :
+    // Chia mang lon thang mang 4 item nho :
     let newJoblist = [...jobList]
     let hotJobList = newJoblist.filter(
       (item) => item.hotjob === 1
@@ -44,7 +44,7 @@ export default function JobCarousel(props) {
         <div className="jobcarousel mt-50">
           <div className="jobcarousel-title">
             <h3>
-              DANH SACH VIEC LAM DANG HOT
+              DANH SÁCH VIỆC LÀM ĐANG HOT
             </h3>
           </div>
         <div className="slider">
@@ -62,9 +62,9 @@ export default function JobCarousel(props) {
             
         </div>
         <div className="jobcarousel-btn">
-        <Button variant="outlined" onClick = {() => goLeft()}> PREV </Button>
+        <Button variant="outlined" onClick = {() => goLeft()}> {`<--`} </Button>
         <span> {current}/{Arr.length} </span>
-        <Button variant="outlined" onClick = {() => goRight()}>NEXT </Button>
+        <Button variant="outlined" onClick = {() => goRight()}> {`-->`} </Button>
         </div>
         </div>
     )

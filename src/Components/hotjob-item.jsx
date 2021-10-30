@@ -33,12 +33,12 @@ export default function HotJobItem({ x, groupData }) {
                     </div>
                     <div className="slide-card-detail">
                       <p>
-                        <b>Cong ty :</b>  {item.company} <br />
-                        <b>Cong viec : </b> {item.jobname} <br />
-                        <b>Luong :</b> {item.salary}
+                        <b>Công ty :</b>  {item.company} <br />
+                        <b>Công việc : </b> {item.jobname} <br />
+                        <b>Lương :</b> {item.salary} VNĐ
                       </p>
                     <div className="slide-card-btn">
-                  <Button variant="outlined" color = "primary" onClick = {() => ViewDetailjob(item.id) } >Xem chi tiet</Button>
+                  <Button variant="outlined" color = "primary" onClick = {() => ViewDetailjob(item.id) } >Xem chi tiết</Button>
                   </div>
                     </div>
                   </div>

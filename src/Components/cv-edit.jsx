@@ -49,9 +49,9 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
     }
 
     const UpdateCV = () => {
-      swal("Ban co muon Cap nhat lai CV ?", {
+      swal("Bạn có muốn cập nhật lại CV này ?", {
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           OK: true,
         },
       })
@@ -77,14 +77,14 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
               ...cvList,
               listCV : [...cvArray]
             })
-            swal("Cap nhat CV thanh!", {
+            swal("Cập nhật CV thành công !", {
               icon: "success",
             });
             sendClosedEditCV(false)
             break;
 
           default:
-            swal("Huy Cap nhat CV",{
+            swal("Hủy cập nhật CV",{
               icon : 'info'
             });
         }
@@ -110,27 +110,27 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
           <Grid container spacing = {3} >
             <Grid  xs = {12}>
               <Grid item xs = {6}>
-                <span>MUC TIEU :</span><br />
+                <span>MỤC TIÊU :</span><br />
                 <textarea name="" id="" cols="75" rows="2" defaultValue = {cvData.muctieu} onChange = {(e) => setMuctieu(e.target.value)}></textarea>
               </Grid>
               <Grid container xs = {12}>
                 <Grid  item xs = {4}>
-                  Gioi tinh : {userDetail.gioitinh === 1 ? 'Nam' : userDetail.gioitinh === 2 ? 'Nu' : 'Khac'}
+                  Giới tính : {userDetail.gioitinh === 1 ? 'Nam' : userDetail.gioitinh === 2 ? 'Nữ' : 'Khác'}
                 </Grid>
                 <Grid item xs = {4}>
-                  Dien thoai : {userDetail.phone}
+                  Điện thoại : {userDetail.phone}
                 </Grid>
                 <Grid item xs = {4}>
                   
                 </Grid>
                 <Grid item xs = {4}>
-                Ngay sinh : {userDetail.dob}
+                Ngày sinh : {userDetail.dob}
                   </Grid>
                   <Grid item xs = {4}>
                 Email : {userData.email}
                   </Grid>
                   <Grid item xs = {4}>
-                Quoc tich : {userDetail.quoctich}
+                Quốc tịch : {userDetail.quoctich}
                   </Grid>
               </Grid>
             </Grid>
@@ -138,31 +138,31 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
           <div className="cv-modal-view-info mt-20">
           <Grid container spacing = {3}>
               <Grid item xs = {6}>
-                  <h4>HOC VAN :</h4>
+                  <h4>HỌC VẤN :</h4>
                   <ul>
                     <li><input type="text" defaultValue = {cvData.hocvan} onChange = {(e)=> setHocvan(e.target.value)}/></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
-                  <h4>KY NANG :</h4>
+                  <h4>KỸ NĂNG :</h4>
                   <ul>
                     <li><input type="text" defaultValue = {cvData.skills} onChange = {(e)=> setSkills(e.target.value)}/></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
-                  <h4>CHUNG CHI :</h4>
+                  <h4>CHỨNG CHỈ :</h4>
                   <ul>
                     <li><input type="text" defaultValue = {cvData.chungchi} onChange = {(e)=> setChungchi(e.target.value)}/></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
-                  <h4>KINH NGHIEM :</h4>
+                  <h4>KINH NGHIỆM :</h4>
                   <ul>
                     <li><input type="text" defaultValue = {cvData.congtycu} onChange = {(e)=> setKinhnghiem(e.target.value)}/></li>
                   </ul>
               </Grid>
               <Grid item xs = {6}>
-                  <h4>TIENG ANH :</h4>
+                  <h4>TIẾNG ANH :</h4>
                   <ul>
                     <li className = 'cv-modal-view-english'>
                         <Grid container spacing = {3}>
@@ -177,7 +177,7 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
                     <li className = 'cv-modal-view-english'>
                         <Grid container spacing = {3}>
                           <Grid item xs = {4}>
-                            NOI :
+                            NÓI :
                           </Grid>
                           <Grid item xs = {8}>
                             <input type="range" defaultValue = {cvData.speaking} max = '10' onChange = {(e) => setSpeaking(e.target.value)}/>
@@ -187,7 +187,7 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
                     <li className = 'cv-modal-view-english'>
                         <Grid container spacing = {3}>
                           <Grid item xs = {4}>
-                            DOC :
+                            ĐỌC :
                           </Grid>
                           <Grid item xs = {8}>
                             <input type="range" defaultValue = {cvData.reading} max = '10' onChange = {(e) => setReading(e.target.value)}/>
@@ -197,7 +197,7 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
                     <li className = 'cv-modal-view-english'>
                         <Grid container spacing = {3}>
                           <Grid item xs = {4}>
-                            VIET :
+                            VIẾT :
                           </Grid>
                           <Grid item xs = {8}>
                             <input type="range" defaultValue = {cvData.writing} max = '10' onChange = {(e)=> setWriting(e.target.value)}/>
@@ -207,7 +207,7 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
                   </ul>
               </Grid>
               <Grid item xs = {6}>
-                  <h4>SO THICH :</h4>
+                  <h4>SỞ THÍCH :</h4>
                   <ul>
                     <li><input type="text"  defaultValue = {cvData.sothich} onChange= {(e) => setSothich(e.target.value)}/></li>
                   </ul>
@@ -218,10 +218,10 @@ export default function CvEdit({cvData, sendClosedEditCV , index}) {
         </div>
         <div className="cv-modal-btn">
         <Button variant="outlined" color="secondary"  onClick = {(e)=> handleCloseEditCV(e)}>
-        <img src={closeicon} style = {{width : '25px'}} alt="" />CLose
+        <img src={closeicon} style = {{width : '25px'}} alt="" />Đóng
         </Button>
         <Button variant="outlined" color="primary"  onClick = {()=> UpdateCV()}>
-        <img src={saveicon} style = {{width : '25px'}} alt="" /> Update
+        <img src={saveicon} style = {{width : '25px'}} alt="" /> Lưu
         </Button>
         </div>
       </Container>

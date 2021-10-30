@@ -31,8 +31,8 @@ export default function CvItem({cvInfo , getViewCVEvent, index , sendCvDatabyInd
 
   const deleteCV = () => {
     swal({
-      title: "Are you sure?",
-      text: "Ban muon xoa CV nay ?",
+      title: "Bạn chắc chứ ?",
+      text: "Bạn muốn xóa CV này ?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -49,11 +49,11 @@ export default function CvItem({cvInfo , getViewCVEvent, index , sendCvDatabyInd
           listCV : cvArray
         })
 
-        swal("CV da duoc xoa thanh cong!", {
+        swal("CV đã được xóa thành công!", {
           icon: "success",
         });
       } else {
-        swal("Huy xoa CV!",{
+        swal("Hủy xóa CV !",{
           icon : 'info'
         });
       }

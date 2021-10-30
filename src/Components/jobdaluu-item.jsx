@@ -21,12 +21,12 @@ export default function JobdaluuItem({data , key}) {
     
 
     const Xoajobdaluu = (id) => {
-        swal("Ban muon xoa di job nay ?", {
+        swal("Bạn muốn xóa đi job này ?", {
             icon : 'warning',
             buttons: {
-              cancel: "Cancel!",
+              cancel: "Hủy!",
               catch: {
-                text: "Xoa",
+                text: "Xóa",
                 value: "catch"
               },
             },
@@ -65,11 +65,11 @@ export default function JobdaluuItem({data , key}) {
                 <div className="quanlyjob-item__content-left">
                 <h3>{data.company}</h3>
                 <h4>{data.jobname}</h4>
-                <h4>Luong : {data.salary}</h4>
+                <h4>Lương : {data.salary} VNĐ</h4>
                 </div>
                 <div className="quanlyjob-item__content-right">
-            <Button style={{width : '125px' , marginBottom : '10px'}} variant="outlined" color = "primary" onClick={()=> ViewJobDetail(data.id)}>Xem chi tiet</Button><br />
-            <Button style={{width : '125px'}} variant="contained" color = "secondary" onClick={()=> Xoajobdaluu(data.id)}>Xoa khoi DS</Button>
+            <Button style={{width : '125px' , marginBottom : '10px'}} variant="outlined" color = "primary" onClick={()=> ViewJobDetail(data.id)}>Xem chi tiết</Button><br />
+            <Button style={{width : '125px'}} variant="contained" color = "secondary" onClick={()=> Xoajobdaluu(data.id)}>Xóa khỏi DS</Button>
             </div>
             </div>
 

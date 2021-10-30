@@ -13,12 +13,12 @@ const Default = ({ userData, hoSoUser }) => {
     <div className="info-container-right-text">
       <h3>{`${userData['first name']} ${userData['last name']}`}</h3>
       <p className="text-content">
-        Chuc Danh : {hoSoUser.chucdanh}
+        Chức danh : {hoSoUser.chucdanh}
         <br></br>
-        Nam kinh nghiem : {hoSoUser.namKN}
+        Năm kinh nghiệm : {hoSoUser.namKN}
         <br></br>
-        Cong ty gan day nhat : <br></br>
-        Bang cap cao nhat : <br></br>
+        Công ty gần đây nhất : <br></br>
+        Bằng cấp cao nhất : <br></br>
       </p>
     </div>
   );
@@ -97,19 +97,19 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
     <div className="edit-form">
       <div className="edit-form-item">
         <TextField
-          label="First Name"
+          label="Họ và tên lót"
           defaultValue={userData["first name"]}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <TextField
-          label="Last Name"
+          label="Tên"
           defaultValue={userData["last name"]}
           onChange={(e) => setLastName(e.target.value)}
         />
       </div>
       <div className="edit-form-item">
         <TextField
-          label="Chuc Danh"
+          label="Chức danh"
           defaultValue={hoSoUser.chucdanh}
           fullWidth
           onChange={(e) => setChucDanh(e.target.value)}
@@ -117,7 +117,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
       </div>
       <div className="edit-form-item">
         <TextField
-          label="So Nam Kinh Nghiem"
+          label="Số năm kinh nghiệm"
           defaultValue={hoSoUser.namKN}
           fullWidth
           onChange={(e) => setNamKN(e.target.value)}
@@ -132,7 +132,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
               size="medium"
               onClick={(e) => handleCancelBtn(e)}
             >
-              Cancel
+              Hủy
             </Button>
           </span>
           <span>
@@ -143,7 +143,7 @@ export function EditForm({ userData, toggleCancel, toggleSave, hoSoUser , userIm
               startIcon={<SaveIcon />}
               onClick={(e) => handleSaveBtn(e)}
             >
-              Save
+              Lưu
             </Button>
           </span>
         </div>
@@ -202,7 +202,7 @@ export default function Thongtinchung({  userData, hoSoUser , ImgUser}) {
           className={clickToggleEdit ? "" : "inactive"}
         >
           <Button variant="contained" component="label">
-            Upload Avatar
+            Tải lên
             <input type="file" hidden onChange = {(e) => uploadAvatar(e)}/>
           </Button>
         </div>

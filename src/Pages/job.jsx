@@ -7,6 +7,7 @@ import jobServices from '../Services/getjobListAPI';
 import { getJob } from '../actions/joblist';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import Footer from './../Components/footer';
 
 export default function Job(props) {
     const location = useLocation()
@@ -64,17 +65,17 @@ export default function Job(props) {
                     <div className="job-search">
                         <div className="job-search-container">
                             <div className="job-search-item">
-                                Co {joblist.length} cong viec phu hop
+                                <i><strong>Có {joblist.length} công việc phù hợp</strong></i>
                             </div>
                             <div className="job-search-item">
-                                <span>Chon nganh nghe </span>
+                                <span><i><strong>Chọn ngành nghề </strong></i></span>
                                 <NativeSelect id="select" style={{ width: '200px', textAlign: 'right' }} 
                                 onChange = {(e) => setJobFind(e.target.value)}
                                 defaultValue = {findID}>
-                                    <option value="0">Tat ca</option>
+                                    <option value="0">Tất cả</option>
                                     <option value="1">IT</option>
-                                    <option value="2">Ban hang</option>
-                                    <option value="3">Tai chinh</option>
+                                    <option value="2">Bán hàng</option>
+                                    <option value="3">Tài chính</option>
                                 </NativeSelect>
                             </div>
 
@@ -91,9 +92,10 @@ export default function Job(props) {
                         </div>
                 </div>
                 <div className="job-banner">
-                    <h2>QUANG CAO BANNER 450 x800 </h2>
+                    <h2>QUẢNG CÁO BANNER 450 x800 </h2>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

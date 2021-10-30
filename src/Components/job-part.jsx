@@ -18,7 +18,7 @@ export default function JobPart({ITjob , Salerjob, Ecomjob}) {
                 <div className="jobpart-titel">
                     <div className="jobpart-count">
                         <div className="jobpart-header">
-                            <span>Cac nganh nghe chinh</span>
+                            <span>CÁC NGÀNH NGHỀ CHÍNH</span>
                         </div>
                         <div className="jobpart-count-list">
                             <div className="jobpart-count-item" onClick = {() => gotoJobPage(1)}>
@@ -26,7 +26,7 @@ export default function JobPart({ITjob , Salerjob, Ecomjob}) {
                                     <img src={iticon} alt="" />
                                 </div>
                                 <div className="jobpart-count-item__detail">
-                                    <span> {ITjob} viec lam IT</span>
+                                    <span> {ITjob} việc làm IT</span>
                                 </div>
                             </div>
                             <div className="jobpart-count-item" onClick = {() => gotoJobPage(2)}>
@@ -34,7 +34,7 @@ export default function JobPart({ITjob , Salerjob, Ecomjob}) {
                                     <img src={salericon} alt="" />
                                 </div>
                                 <div className="jobpart-count-item__detail">
-                                    <span> {Salerjob} viec lam ban hang</span>
+                                    <span> {Salerjob} việc làm bán hàng</span>
                                 </div>
                             </div>
                             <div className="jobpart-count-item" onClick = {() => gotoJobPage(3)}>
@@ -42,7 +42,7 @@ export default function JobPart({ITjob , Salerjob, Ecomjob}) {
                                     <img src={ecomicon} alt="" />
                                 </div>
                                 <div className="jobpart-count-item__detail">
-                                    <span>{Ecomjob} viec lam tai chinh</span>
+                                    <span>{Ecomjob} việc làm tài chính</span>
                                 </div>
                             </div>
                         </div>

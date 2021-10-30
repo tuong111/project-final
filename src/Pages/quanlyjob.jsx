@@ -8,6 +8,7 @@ import { getDetailByID } from './../actions/detailInfo';
 import JobdaungtuyenItem from './../Components/jobdaungtuyen-item';
 import JobdaluuItem from '../Components/jobdaluu-item';
 import { useSelector } from 'react-redux';
+import Footer from './../Components/footer';
 
 
 
@@ -47,7 +48,7 @@ export default function Quanlyjob(props) {
                         <div className="quanlyjob-content__job-header">
                             <div className="quanlyjob-content_job-header-container">
                                 <p>
-                                    Ban da ung tuyen vao {jobungtuyen.length} job
+                                   <i><strong> Bạn đã ứng tuyển vào {jobungtuyen.length} job</strong></i>
                                 </p>
                             </div>
                         </div>
@@ -66,7 +67,7 @@ export default function Quanlyjob(props) {
                         <div className="quanlyjob-content__job-header">
                             <div className="quanlyjob-content_job-header-container">
                                 <p>
-                                    Ban da luu lai {jobdaluu.length} job
+                                    <i><strong>Bạn đã lưu lại {jobdaluu.length} job</strong></i>
                                 </p>
                             </div>
                         </div>
@@ -82,10 +83,11 @@ export default function Quanlyjob(props) {
                     </div>
                 </div>
                 <div className="quanlyjob-banner">
-                    <h2>QUANG CAO BANNER 450 x800 </h2>
+                    <h2>QUẢNG CÁO BANNER 450 x800 </h2>
                 </div>
 
             </div>
+            <Footer/>
         </div>
     )
 }

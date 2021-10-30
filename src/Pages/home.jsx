@@ -12,6 +12,7 @@ import Aboutus from "../Components/aboutus";
 import CVServices from './../Services/getCvListAPI';
 import userServices from './../Services/getUsersAPI';
 import JobPart from "../Components/job-part";
+import Footer from './../Components/footer';
 
 
 
@@ -79,15 +80,12 @@ export default function Home(props) {
 
   const history = useHistory()
   
-  const btnCreateCV = () => {
-    console.log(localStorage.getItem('isLogin'))
-    if (localStorage.getItem('isLogin')) {
-      
-      swal("Ban muon tao CV ?", {
+  const btnCreateCV = () => {  
+      swal("Bạn muốn tạo CV ?", {
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           catch: {
-            text: "Go to CV PAGE",
+            text: "Đến trang Quản lý CV",
             value: "catch"
           },
         },
@@ -105,32 +103,6 @@ export default function Home(props) {
             default:
           }
         });
-    }else {
-      swal("Ban phai dang nhap de thuc hien thao tac nay !", {
-        icon: "info",
-        buttons: {
-          cancel: "Cancel!",
-          catch: {
-            text: "Go to Sign In",
-            value: "catch"
-          },
-        },
-      })
-        .then((value) => {
-          switch (value) {
-  
-            case "defeat":
-              break;
-  
-            case "catch":
-              history.push('/signin')
-              break;
-  
-            default:
-          }
-        });
-    }
-    
   }
   return (
     <div className="home">
@@ -139,7 +111,7 @@ export default function Home(props) {
       <div className="hero">
         <div className="hero-button">
           <Button variant="outlined" style={{ width: '250px', height: '70px' }} color="primary" onClick={() => btnCreateCV()}>
-            <NoteAddIcon fontSize='large' /> <span>CREATE CV</span>
+            <NoteAddIcon fontSize='large' /> <span>TẠO CV</span>
           </Button>
         </div>
       </div>
@@ -147,7 +119,8 @@ export default function Home(props) {
       <JobPart ITjob = {ITjob.length} Salerjob = {Salerjob.length} Ecomjob = {Ecomjob.length}/> 
       <Aboutus sumCV = {sumCV} sumUsers = {listuser.length} sumJobs = {joblist.length}/>
       </div>
-      
+      <Footer/>
     </div>
+    
   );
 }

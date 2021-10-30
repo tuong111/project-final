@@ -55,10 +55,10 @@ export default function JobDetail(props) {
 
   const Ungtuyen= () => {
     if (localStorage.getItem('isLogin')) {
-      swal("Ban muon Ung tuyen vao job", {
+      swal("Bạn muốn ứng tuyển vào job", {
         icon: "info",
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           catch: {
             text: "OK",
             value: "catch"
@@ -77,12 +77,12 @@ export default function JobDetail(props) {
                   ...detailUser,
                   jobdaungtuyen : [...detailUser.jobdaungtuyen,Number(id)]
                 })
-                swal("Ban da ung tuyen thanh cong",{
+                swal("Bạn đã ứng tuyển thành công",{
                   icon : "success"
                 })
                 history.push('/job')
               }else {
-                swal("Job nay da co trong DS ung tuyen cua ban",{
+                swal("Job này đã có trong DS ứng tuyển của bạn",{
                   icon : "warning"
                 })
               }
@@ -92,12 +92,12 @@ export default function JobDetail(props) {
           }
         });
     }else {
-      swal("Ban phai dang nhap de thuc hien thao tac nay !", {
+      swal("Bạn phải đăng nhập để thực hiện thao tác này !", {
         icon: "info",
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           catch: {
-            text: "Go to Sign In",
+            text: "Đến trang đăng nhập",
             value: "catch"
           },
         },
@@ -119,10 +119,10 @@ export default function JobDetail(props) {
   }
   const LuuJob = () => {
     if (localStorage.getItem('isLogin')) {
-      swal("Ban muon Luu lai job", {
+      swal("Bạn muốn lưu lại job", {
         icon: "info",
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           catch: {
             text: "OK",
             value: "catch"
@@ -141,12 +141,12 @@ export default function JobDetail(props) {
                   ...detailUser,
                   jobdaluu : [...detailUser.jobdaluu,Number(id)]
                 })
-                swal("Ban da Luu job thanh cong",{
+                swal("Bạn đã lưu job thành công !",{
                   icon : "success"
                 })
                 history.push('/job')
               }else {
-                swal("Job nay da co trong DS da luu cua ban",{
+                swal("Job này đã có trong danh sách đã lưu",{
                   icon : "warning"
                 })
               }
@@ -156,12 +156,12 @@ export default function JobDetail(props) {
           }
         });
     }else {
-      swal("Ban phai dang nhap de thuc hien thao tac nay !", {
+      swal("Bạn phải đăng nhập để thực hiện thao tác này !", {
         icon: "info",
         buttons: {
-          cancel: "Cancel!",
+          cancel: "Hủy!",
           catch: {
-            text: "Go to Sign In",
+            text: "Đến trang đăng nhập",
             value: "catch"
           },
         },
@@ -193,26 +193,26 @@ export default function JobDetail(props) {
             <div className="job-detail__content-l ml-20">
               <h3>{jobdetail.company}</h3>
               <h4>{jobdetail.jobname}</h4>
-              <h4>Luong : {jobdetail.salary}</h4>
-              <h4>Dia diem lam viec : {jobdetail.noilamviec} </h4>
+              <h4>Lương : {jobdetail.salary} VNĐ</h4>
+              <h4>Địa điểm làm việc : {jobdetail.noilamviec} </h4>
             </div>
             <div className="job-detail__content-r">
-              <ColorButton variant="contained" onClick = {() => Ungtuyen()}>Ung tuyen</ColorButton><br />
-              <AddButton variant="contained" onClick = {()=> LuuJob()}> Luu viec lam</AddButton>
+              <ColorButton variant="contained" onClick = {() => Ungtuyen()}>Ứng tuyển</ColorButton><br />
+              <AddButton variant="contained" onClick = {()=> LuuJob()}> Lưu việc làm</AddButton>
             </div>
           </div>
         </div>
         <div className="job-detail__mota">
           <div className="job-detail__mota-container">
-            <h3>MO TA CONG VIEC</h3>
+            <h3>MÔ TẢ CÔNG VIỆC</h3>
             <p>
               {jobdetail.mota}
             </p>
-            <h3>YEU CAU CONG VIEC</h3>
+            <h3>YÊU CẦU CÔNG VIỆC</h3>
             <p>{jobdetail.yeucau}</p>
-            <h3>DIA DIEM LAM VIEC</h3>
+            <h3>ĐỊA ĐIỂM LÀM VIỆC</h3>
             <p>{jobdetail.noilamviec}</p>
-            <h3>NGAY DANG :</h3><span>{jobdetail.ngaydang}</span>
+            <h3>NGÀY ĐĂNG :</h3><span>{jobdetail.ngaydang}</span>
           </div>
 
         </div>

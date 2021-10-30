@@ -18,12 +18,12 @@ export default function JobItem({jobdata}) {
                 <div className="job-listinfo-item__content-left">
                     <h3>{jobdata.company}</h3>
                     <h4>
-                        Cong viec : {jobdata.jobname}
+                        Công việc : {jobdata.jobname}
                     </h4>
-                    <h4> Luong : {jobdata.salary} VND</h4>
+                    <h4> Lương : {jobdata.salary} VNĐ </h4>
                 </div>
                 <div className="job-listinfo-item__content-right">
-                <Button variant="outlined" color = "primary" onClick={()=> ViewJobDetail(jobdata.id)}>Xem chi tiet</Button>
+                <Button variant="outlined" color = "primary" onClick={()=> ViewJobDetail(jobdata.id)}>Xem chi tiết</Button>
                 </div>
             </div>
         </div>

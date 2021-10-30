@@ -16,10 +16,10 @@ export default function JobdaungtuyenItem({data , key}) {
                 <div className="quanlyjob-item__content-left">
                 <h3>{data.company}</h3>
                 <h4>{data.jobname}</h4>
-                <h4>Luong : {data.salary}</h4>
+                <h4>Lương : {data.salary} VNĐ</h4>
                 </div>
                 <div className="quanlyjob-item__content-right">
-            <Button variant="outlined" color = "primary" onClick={()=> ViewJobDetail(data.id)}>Xem chi tiet</Button>
+            <Button variant="outlined" color = "primary" onClick={()=> ViewJobDetail(data.id)}>Xem chi tiết</Button>
             </div>
             </div>
 

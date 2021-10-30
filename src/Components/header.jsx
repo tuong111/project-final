@@ -22,14 +22,14 @@ const ModalLogin = ({ props }) => {
         onClick={() => history.push("/signin")}
       >
         <PersonIcon />
-        <span>Sign In</span>
+        <span>Đăng nhập</span>
       </div>
       <div
         className="header-modal-item"
         onClick={() => history.push("/signup")}
       >
         <PersonAddIcon />
-        <span>Sign Up</span>
+        <span>Đăng ký</span>
       </div>
     </div>
   );
@@ -47,11 +47,11 @@ const ModalInfo = ({ logOutToggle , userImg}) => {
         <span>
           <img src = {userImg} alt="" />
         </span>
-        <span>My Info</span>
+        <span>Thông tin cá nhân</span>
       </div>
       <div className="header-modal-item" onClick={SignOut}>
         <ExitToAppIcon />
-        <span>Sign Out</span>
+        <span>Đăng xuất</span>
       </div>
     </div>
   );
@@ -87,17 +87,17 @@ export default function Header({userID}) {
           <Link to="/"> JEST W </Link>
         </div>
         <div className="header-title">
-          <Link to="/interview" className="header-item" key="itv">
-            Phỏng vấn
-          </Link>
           <Link to="/candidate" className="header-item" key="cdd">
-            Quan ly CV
-          </Link>
-          <Link to="/hr" className="header-item" key="hr">
-            Nhân sự
+            Quản lý CV
           </Link>
           <Link to="/job" className="header-item" key="job">
             Việc làm
+          </Link>
+          <Link to="/quanlyjob" className="header-item" key="hr">
+            Quản lý việc làm
+          </Link>
+          <Link to="/tuyendung" target={"_blank"}  className="header-item" key="hr">
+            Nhà tuyển dụng
           </Link>
         </div>
         <div className={checkLogin ? "header-left" : "inactive"}>
@@ -119,7 +119,7 @@ export default function Header({userID}) {
             >
               <div className="btn-login">
                 <AccountCircleIcon />
-                <span> Login </span>
+                <span> Đăng nhập </span>
               </div>
             </Button>
           </div>

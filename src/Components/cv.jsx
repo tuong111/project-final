@@ -41,7 +41,7 @@ export default function Cv(props) {
           <Grid item xs={12}>
             <div className="cv-title">
               <Typography variant="h6" component="h6">
-                Danh sach cac mau CV
+                Danh sách các mẫu CV của bạn
               </Typography>
             </div>
           </Grid>
@@ -49,7 +49,7 @@ export default function Cv(props) {
             <Card style={{ minHeight: "300px", cursor: "pointer", display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               onClick={() => setOpenModal(true)}>
               <div className="cv-card">
-                <h4>Add New CV</h4>
+                <h4>Thêm mới CV</h4>
                 <img src="https://cdn3.iconfinder.com/data/icons/job-resume-5/66/6-512.png" alt="" />
               </div>
             </Card>

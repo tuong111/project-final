@@ -1,0 +1,50 @@
+.tuyendung {
+    width: 100%;
+    background: #e9fbe9;
+}
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    
+}
+
+.td_header {
+    padding : 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.td_logo {
+    padding-left: 2rem;
+    a {
+        text-decoration: none;
+        color : black;
+        font-size: 2rem;
+    }   
+}
+.td-menu {
+    a {
+        margin-right: 1.2rem;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color : black;
+    }
+}
+ .td-auth {
+     button {
+         margin-right: 1.5rem;
+     }
+ }
+
+ .td {
+     &_hero {
+         width: 100%;
+         background-image: url('https://data.designervn.net/2019/06/8822_98f06d7de8b795b0644a01f096a243bb.jpg') ;
+         background-size: cover;
+         height: 400px;
+     }
+ }
+
+
+
+

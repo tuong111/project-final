@@ -1,0 +1,94 @@
+.job {
+    &-container {
+        width: 80%;
+        margin: auto;
+        height: 800px;
+        display: flex;
+        gap: 1rem;
+        
+    }
+    &-content {
+        width: 70%;
+        border: 1px solid $primaryColor;
+        border-radius: 1rem;
+    }
+    &-banner {
+        width: 30%;
+        // border: 1px solid $primaryColor;
+        // animation: changeColor 15s infinite;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        gap : 2rem;
+        border-radius: 1rem;
+        img {
+            width: 450px;
+            border-radius: 1rem;
+            
+        }
+         }
+    &-search {
+        border: 1px solid $primaryColor;
+        border-radius: 1rem;
+        margin: 20px;
+
+        &-container {
+            padding: 10px;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            
+        }
+    }
+    &-listinfo {
+        height: 700px;
+        overflow: scroll;
+        overflow-x: hidden;
+        margin: 20px;
+        &-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+            border: 1px solid;
+            border-color: $primaryColor;
+            background-image: url('https://sackim.com/wp-content/uploads/2020/01/19.jpg');
+            background-repeat: none;
+            background-size: cover;
+            border-radius: 1rem;
+            margin-bottom: 20px;
+            &__img {
+                width: 20%;
+                padding-left: 1rem;
+                
+                img {
+                    width: 150px;
+                    vertical-align: middle;
+                    border-right: $primaryColor 1px solid;
+                    border-radius: 1rem;
+                }
+            }
+            &__content {
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                &-left {
+                    width: 80%;
+                    text-align: left;
+                }
+                &-right {
+                    width: 20%;
+                }
+            }
+        }
+    }
+}
+@keyframes changeColor {
+    from {background : $primaryColor;}
+    50% {background : yellow;} /* ignored */
+    to {background : pink;}
+  }

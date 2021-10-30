@@ -4,10 +4,12 @@ import Home from './home';
 import Job from './job';
 import Candidate from './candidate';
 import Interview from './interview';
-import Hr from './hr';
 import Signin from './signin';
 import Signup from './signup';
 import Infouser from './infoUser';
+import JobDetail from './job-detail';
+import Quanlyjob from './quanlyjob';
+import Tuyendung from './tuyendung';
 
 export default function Pages(props) {
 
@@ -18,11 +20,13 @@ export default function Pages(props) {
                 <Route exact path="/" component={Home} />
                 <Route path="/job" component={Job} />
                 <Route path='/candidate' component={Candidate} />
-                <Route path='/hr' component={Hr} />
+                <Route path='/jobdetail/:id' component={JobDetail} />
+                <Route path='/quanlyjob' component={Quanlyjob} />
                 <Route path='/interview' component={Interview} />
                 <Route path = '/signin' component={Signin}/>
                 <Route path = '/signup' component={Signup}/>
                 <Route path = '/info' component = {Infouser}/>
+                <Route path = '/tuyendung' component = {Tuyendung}/>
             </Switch>
         </Router>
     )

@@ -1,0 +1,33 @@
+.footer {
+    width: 100%;
+    min-height: 200px;
+    background-image: url('https://www.karonia.com/assets/img/footer/footer-background.png');
+    background-size: cover;
+    background-repeat: none;
+    &-container {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+    &-info{
+        width: 70%;
+    }
+    &-logo{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        img {
+            border-radius: 10rem;
+        }
+    }
+    &-lienhe {
+        a {
+            text-decoration: none;
+        }
+    }
+}

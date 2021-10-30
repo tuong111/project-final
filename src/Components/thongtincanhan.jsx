@@ -13,22 +13,22 @@ export function Default({ userData }) {
       <Grid item xs={6}>
         <ul>
           <li>Email : {userData.email}</li>
-          <li>Ngay sinh : {detailInfo.dob}</li>
+          <li>Ngày sinh : {detailInfo.dob}</li>
           <li>
-            Gioi tinh :{" "}
+            Giới tính :{" "}
             {detailInfo.gioitinh === 1
               ? "Nam"
               : detailInfo.gioitinh === 2
-              ? "Nu"
-              : "Khac"}
+              ? "Nữ"
+              : "Khác"}
           </li>
           <li>Phone : {detailInfo.phone}</li>
         </ul>
       </Grid>
       <Grid item xs={6}>
         <ul>
-          <li>Quoc tich : {detailInfo.quoctich}</li>
-          <li>Tinh thanh : {detailInfo.tinhthanh}</li>
+          <li>Quốc tịch : {detailInfo.quoctich}</li>
+          <li>Tỉnh thành : {detailInfo.tinhthanh}</li>
         </ul>
       </Grid>
     </Grid>
@@ -92,7 +92,7 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
         />
         <TextField
           defaultValue={detailInfo.dob}
-          label="Ngay sinh"
+          label="Ngày sinh"
           type="date"
           margin="normal"
           variant="outlined"
@@ -100,18 +100,18 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
           onChange = {(e) => setDob(e.target.value)}
         />
         <FormControl variant="outlined" style={{ width: "100px" }}>
-          <InputLabel>Gender</InputLabel>
-          <Select label="Gender" defaultValue={detailInfo.gioitinh}
+          <InputLabel>Giới tính</InputLabel>
+          <Select label="Giới tính" defaultValue={detailInfo.gioitinh}
           onChange = {(e) => setGioitinh(e.target.value)}>
             <MenuItem value={1}>Nam</MenuItem>
-            <MenuItem value={2}>Nu</MenuItem>
-            <MenuItem value={3}>Khac</MenuItem>
+            <MenuItem value={2}>Nữ</MenuItem>
+            <MenuItem value={3}>Khác</MenuItem>
           </Select>
         </FormControl>
       </div>
       <div className="info-container-half">
         <TextField
-          label="Phone"
+          label="Điện thoại"
           margin="normal"
           variant="outlined"
           fullWidth
@@ -120,7 +120,7 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
         />
         <TextField
         defaultValue={detailInfo.quoctich}
-          label="Quoc tich"
+          label="Quốc tịch"
           margin="normal"
           variant="outlined"
           fullWidth
@@ -128,7 +128,7 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
         />
         <TextField
           defaultValue={detailInfo.tinhthanh}
-          label="Tinh thanh"
+          label="Tỉnh thành"
           margin="normal"
           variant="outlined"
           fullWidth
@@ -142,7 +142,7 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
             size="medium"
             onClick={(e) => handleCancelBtn(e)}
           >
-            Cancel
+            Hủy
           </Button>
         </span>
         <span style={{ marginLeft: "15px" }}>
@@ -153,7 +153,7 @@ export function EditForm({ toggleCancel, toggleSave, userData }) {
             startIcon={<SaveIcon />}
             onClick={(e) => handleSaveBtn(e)}
           >
-            Save
+            Lưu
           </Button>
         </span>
       </div>

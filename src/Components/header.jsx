@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { defaultUser, getUserID } from './../actions/users';
 import { defaultCVList } from "../actions/cvlist";
 import { defaultDetail } from "../actions/detailInfo";
+import logojw from '../img/logojw.png'
 
 const ModalLogin = ({ props }) => {
   const history = useHistory();
@@ -84,7 +85,8 @@ export default function Header({userID}) {
     <header className="header">
       <div className="header-top">
         <div className="header-logo">
-          <Link to="/"> JEST W </Link>
+          <Link to="/">  
+          <i><strong>JEST W</strong></i></Link>
         </div>
         <div className="header-title">
           <Link to="/candidate" className="header-item" key="cdd">

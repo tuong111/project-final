@@ -12,10 +12,10 @@ export default function Footer(props) {
                         <strong>JEST W COMPANY</strong>
                     </p>
                     <p>
-                        <strong>Trụ sở HN:</strong> <br />
-                        Tầng 03, Tòa nhà Goldseason, 47 Nguyễn Tuân, Thanh Xuân, Hà Nội
-                        <br /><strong>Chi nhánh TP HCM:</strong> <br />
-                        Tòa nhà cao ốc Nam Giao 1, số 261 - 263 Phan Xích Long, Phường 2, Quận Phú Nhuận, TP Hồ Chí Minh
+                        <strong>Trụ sở Bình Dương:</strong> <br />
+                        603A DT743A, khu phố Đông Tân, TP. Dĩ An, tỉnh Bình Dương
+                        <br /><strong>Chi nhánh HCM:</strong> <br />
+                        Toà nhà ABC, đường 123, quận 1, TP Hồ Chí Minh
                     </p>
                 </div>
                 <div className="footer-logo">
